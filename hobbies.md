@@ -24,8 +24,3 @@ He is my love. His name is Guige (龟哥).
 </div>
 <br>
 
-<!-- Calendly inline widget begin -->
-
-<div class="calendly-inline-widget" data-url="https://calendly.com/lancecai/meet-with-lance" style="min-width:320px;height:630px;"></div>
-<!-- Calendly inline widget end -->
-
