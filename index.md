@@ -4,7 +4,7 @@ layout: page
 
 # About Me
 
-<img src="images/白底.jpg" class="floatpic">
+<img src="images/白底.png" class="floatpic">
 
 Here is **Sorry Qin (覃佐睿)**.<br>
 
