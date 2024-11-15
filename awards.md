@@ -9,10 +9,9 @@ title: Awards
 ## Scholarships
 
 - Nov 2024：Third-Class Academic Scholarship (￥4000)
-- June 2024：Best Final Year Project Award of Maynooth (€500)
-- Oct 2023：Best Academic Performance of Maynooth (€100)
-- Oct 2022：Best Course Project Award of Maynooth (￥600)
-- Oct 2022：Academic Improvement Scholarship (￥600)
+- June 2023：Self-Strengthening Scholarship (￥800)
+- Oct 2022：Outstanding Student Leader Scholarship (￥600)
+- Oct 2021：Academic Improvement Scholarship (￥600)
 
 
 <br>
