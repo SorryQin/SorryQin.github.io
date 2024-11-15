@@ -1,4 +1,4 @@
-title: Sorry Qin
+title: Sorry Qin (覃佐睿)
 # tagline: Here is personal website of Sorry Qin. 
 # description: Fuck World
 #Comment out url when working locally to resolve base urls correctly
@@ -79,7 +79,7 @@ kramdown:
 
 # disqus settings:
 disqus:
-  shortname: lancecai
+  shortname: Sorry
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "minimal-mistakes.sublime-project", "minimal-mistakes.sublime-workspace"]
