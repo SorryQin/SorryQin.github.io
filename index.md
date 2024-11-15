@@ -20,7 +20,7 @@ If you are interested in any aspect of me, I am always open to discussions and c
 - Molecular Communication
 - Computer Vision
 
-My current research focuses on computer vision. My interests are on the **Machine Learning** and its applications in **Industrial IoT**.
+My current research focuses on Computer Vision. My interests are on the **Machine Learning** and its applications in **Computer Vision**.
 I wish to devote my talent to this meaningful cause and bring well-being to society.
 
 ---
