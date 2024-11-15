@@ -7,6 +7,8 @@ layout: page
 
 <img src="images/qin.jpg" class="floatpic">
 
+<br>
+
 Here is **Sorry Qin (覃佐睿)**.<br>
 
 I am a student in Huazhong University of Science and Technology. 
