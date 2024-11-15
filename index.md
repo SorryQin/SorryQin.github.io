@@ -2,7 +2,7 @@
 layout: page
 ---
 
-# About Me
+# Sorry Qin (覃佐睿)
 
 <img src="images/白底.png" class="floatpic">
 
