@@ -4,9 +4,9 @@ layout: page
 
 # About Me
 
-<img src="https://caihanlin.com/caihanlin.jpg" class="floatpic">
+<img src="images/白底.jpg" class="floatpic">
 
-Here is **Hanlin Cai (Lance, 蔡汉霖)**.<br>
+Here is **Sorry Qin (覃佐睿)**.<br>
 
 I am a student in Huazhong University of Science and Technology. 
 
