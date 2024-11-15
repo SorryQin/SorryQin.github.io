@@ -4,7 +4,7 @@ layout: page
 
 # Sorry Qin (覃佐睿)
 
-<img src="images/白底.png" class="floatpic">
+<img src="images/qin.jpg" class="floatpic">
 
 Here is **Sorry Qin (覃佐睿)**.<br>
 
