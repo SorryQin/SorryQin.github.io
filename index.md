@@ -11,7 +11,7 @@ layout: page
 
 Here is **Sorry Qin (覃佐睿)**.<br>
 
-I am a student in Huazhong University of Science and Technology. 
+I am a postgraduate student in Huazhong University of Science and Technology. 
 
 If you are interested in any aspect of me, I am always open to discussions and collaborations. Feel free to e-mail me at qinzuorui@outlook.com.<br>
 
