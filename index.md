@@ -32,7 +32,7 @@ I wish to devote my talent to this meaningful cause and bring well-being to soci
 
 - **Sep 2024：**Begin graduate studies at the School of Electronic Information and Communications at Huazhong University of Science and Technology.
 - **Jun 2024：**Very excited to Obtain a Bachelor of Engineering degree.
-- **Nov 2023：**Very excited to be selected to Telecommunications Engineering major.
+- **Nov 2021：**Very excited to be selected to Communications Engineering major.
 - **Sep 2020：**Begin undergraduate studies at the School of Electronic Information and Communications at Huazhong University of Science and Technology. 
 
 <br>
