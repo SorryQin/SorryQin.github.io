@@ -398,3 +398,7 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
     display: none; /* 如果有侧边栏，可以在小屏隐藏 */
   }
 }
+img, video {
+  max-width: 100%;
+  height: auto;
+}
