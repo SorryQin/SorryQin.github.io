@@ -4,7 +4,7 @@ permalink: /awards/index.html
 title: Awards
 ---
 
-> Update: 15th Nov 2024
+> Update: 20th Nov 2025
 
 ## Scholarships
 
