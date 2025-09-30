@@ -8,7 +8,7 @@ title: Awards
 
 ## Scholarships
 
-- Nov 2025： Three Good Student at the school level（￥2000）
+- Nov 2025：Three Good Student at the school level（￥2000）
 - Nov 2024：Third-Class Academic Scholarship (￥4000)
 - June 2023：Self-Strengthening Scholarship (￥800)
 - Oct 2022：Outstanding Student Leader Scholarship (￥600)
