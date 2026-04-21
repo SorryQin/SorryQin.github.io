@@ -6,7 +6,7 @@ lang: en
 
 # GitHub Pages configuration
 markdown: kramdown
-theme: null
+highlighter: null
 plugins:
   - jekyll-seo-tag
 
@@ -14,7 +14,6 @@ plugins:
 exclude:
   - .idea
   - .gitignore
-  - "*.md"
-  - LICENSE
-  - README.md
-  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - .sass-cache
