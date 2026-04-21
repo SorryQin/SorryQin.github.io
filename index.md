@@ -3,237 +3,292 @@ layout: page
 ---
 
 <style>
-/* Creative/Colorful Theme */
+/* Hero Image Theme */
 :root {
-  --primary: #6366f1;
+  --primary: #4f46e5;
   --secondary: #ec4899;
   --accent: #f59e0b;
-  --teal: #14b8a6;
-  --purple: #a855f7;
+  --teal: #0891b2;
   --text-dark: #1e293b;
   --text-light: #64748b;
-  --bg-light: #fafafa;
+  --bg-light: #f8fafc;
   --bg-card: #ffffff;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+* { box-sizing: border-box; }
+
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #fdf2f8 0%, #faf5ff 50%, #f0f9ff 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-light);
   color: var(--text-dark);
-  min-height: 100vh;
+  margin: 0;
   line-height: 1.6;
 }
 
 /* Navigation */
-.navigation-wrapper {
-  background: rgba(255, 255, 255, 0.9);
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
+  z-index: 100;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.site-name a {
-  font-size: 1.5rem;
+.nav-logo {
+  font-size: 1.4rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  text-decoration: none;
 }
 
-.top-navigation li a {
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
   color: var(--text-light);
-  font-weight: 600;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
   transition: color 0.3s;
 }
 
-.top-navigation li a:hover {
-  color: var(--primary);
-}
-
-.top-navigation-current a {
-  color: var(--primary) !important;
-}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a.active { color: var(--primary); }
 
 /* Hero Section */
-.hero-section {
-  text-align: center;
-  padding: 80px 20px 60px;
+.hero {
   position: relative;
-}
-
-/* Decorative blobs */
-.hero-section::before,
-.hero-section::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.5;
-  z-index: -1;
-}
-
-.hero-section::before {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(236, 72, 153, 0.3));
-  top: -100px;
-  left: -100px;
-}
-
-.hero-section::after {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(20, 184, 166, 0.3));
-  bottom: 0;
-  right: -50px;
-}
-
-/* Avatar */
-.avatar-wrapper {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 30px;
-}
-
-.avatar-wrapper img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid white;
-  box-shadow: var(--shadow);
-}
-
-.avatar-decoration {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent), var(--teal));
-  background-size: 300% 300%;
-  animation: gradient-move 5s ease infinite;
-  z-index: -1;
-}
-
-@keyframes gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Name styling */
-.hero-name {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: 900;
-  margin: 0 0 10px;
-  letter-spacing: -2px;
-}
-
-.hero-name .chinese {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--text-light);
-  letter-spacing: 0;
-  margin-top: 5px;
-}
-
-.hero-tagline {
-  font-size: 1.25rem;
-  color: var(--text-light);
-  max-width: 500px;
-  margin: 0 auto 30px;
-}
-
-.hero-tagline strong {
-  color: var(--primary);
-}
-
-/* Colorful pills */
-.pill-container {
+  height: 85vh;
+  min-height: 600px;
+  max-height: 900px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-
-.pill {
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.pill:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.pill-primary { background: linear-gradient(135deg, var(--primary), #818cf8); }
-.pill-secondary { background: linear-gradient(135deg, var(--secondary), #f472b6); }
-.pill-accent { background: linear-gradient(135deg, var(--accent), #fbbf24); }
-.pill-teal { background: linear-gradient(135deg, var(--teal), #5eead4); }
-.pill-purple { background: linear-gradient(135deg, var(--purple), #c084fc); }
-
-/* Content cards */
-.content-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px 60px;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.card {
-  background: var(--bg-card);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
   overflow: hidden;
+  margin-top: 70px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(236, 72, 153, 0.85) 100%),
+    url('/images/qin.jpg') center/cover no-repeat;
+  filter: blur(0px);
 }
 
-.card::before {
+.hero-bg::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 100%);
 }
 
-.card-primary::before { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
-.card-secondary::before { background: linear-gradient(90deg, var(--teal), var(--accent)); }
-.card-purple::before { background: linear-gradient(90deg, var(--purple), var(--secondary)); }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 40px;
+  max-width: 800px;
+}
+
+.hero-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title .sub {
+  display: block;
+  font-size: 0.45em;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-top: 5px;
+  letter-spacing: 0.05em;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  margin: 0 0 30px;
+  opacity: 0.95;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta {
+  display: inline-flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: white;
+  color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: white;
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+}
+
+.scroll-hint::after {
+  content: '↓';
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Main Content */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+/* Section styles */
+.section {
+  margin-bottom: 80px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 15px;
+}
+
+.section-subtitle {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
 
 .card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
 }
 
-.card h2 {
+.card-icon.primary { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+.card-icon.pink { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+.card-icon.amber { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+.card-icon.teal { background: linear-gradient(135deg, #cffafe, #a5f3fc); }
+
+.card h3 {
   font-size: 1.3rem;
   font-weight: 700;
-  margin: 0 0 15px;
+  margin: 0 0 12px;
   color: var(--text-dark);
 }
 
@@ -245,64 +300,69 @@ body {
 
 /* Skills */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .skill-tag {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  padding: 12px 15px;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 600;
+  background: #f1f5f9;
+  padding: 8px 18px;
+  border-radius: 50px;
   font-size: 0.9rem;
-  color: var(--primary);
+  font-weight: 500;
+  color: var(--text-dark);
   transition: all 0.3s;
 }
 
 .skill-tag:hover {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   color: white;
-  border-color: transparent;
-  transform: scale(1.05);
 }
 
 /* Timeline */
+.timeline-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+
 .timeline {
   position: relative;
-  padding-left: 30px;
+  padding-left: 35px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 8px;
-  top: 0;
-  bottom: 0;
+  left: 7px;
+  top: 5px;
+  bottom: 5px;
   width: 3px;
-  background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent), var(--teal));
+  background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent));
   border-radius: 3px;
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 25px;
+  padding-bottom: 30px;
 }
+
+.timeline-item:last-child { padding-bottom: 0; }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -26px;
-  top: 5px;
+  left: -31px;
+  top: 6px;
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: white;
   border: 3px solid var(--primary);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
 }
 
 .timeline-date {
@@ -314,200 +374,269 @@ body {
 
 .timeline-content {
   color: var(--text-dark);
+  font-weight: 500;
 }
 
-.timeline-content strong {
-  color: var(--text-dark);
+.timeline-content span {
+  display: block;
+  color: var(--text-light);
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-top: 3px;
 }
 
-/* Contact section */
-.contact-bar {
-  background: var(--bg-card);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-dark);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 50px;
-  transition: all 0.3s;
-}
-
-.contact-item:hover {
+/* Contact */
+.contact-section {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 24px;
+  padding: 60px 40px;
+  text-align: center;
   color: white;
 }
 
-.contact-icon {
-  font-size: 1.2rem;
+.contact-section h2 {
+  font-size: 2rem;
+  margin: 0 0 15px;
+}
+
+.contact-section p {
+  opacity: 0.9;
+  margin: 0 0 30px;
+  font-size: 1.1rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.contact-link {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.contact-link:hover {
+  background: white;
+  color: var(--primary);
+  transform: translateY(-2px);
 }
 
 /* Footer */
-.footer-wrap {
-  background: transparent;
-  padding: 40px 20px;
+.footer {
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 50px 40px;
+  text-align: center;
 }
 
-.footer-wrap footer {
-  text-align: center;
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
+.footer p { margin: 0; font-size: 0.9rem; }
+.footer a { color: white; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 60px 20px 40px;
-  }
+  .nav { padding: 0 20px; }
+  .nav-links { display: none; }
 
-  .avatar-wrapper {
-    width: 150px;
-    height: 150px;
-  }
+  .hero { height: 70vh; min-height: 500px; }
+  .hero-avatar { width: 120px; height: 120px; }
 
-  .avatar-wrapper img {
-    width: 150px;
-    height: 150px;
-  }
+  .main { padding: 60px 20px; }
+  .section { margin-bottom: 60px; }
 
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-bar {
-    flex-direction: column;
-  }
-}
-
-/* Animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+  .card-grid { grid-template-columns: 1fr; }
+  .contact-section { padding: 40px 25px; }
 }
 </style>
 
-<div class="hero-section">
-  <div class="avatar-wrapper">
-    <div class="avatar-decoration"></div>
-    <img src="/images/qin.jpg" alt="Sorry Qin" loading="eager">
-  </div>
+<!-- Navigation -->
+<nav class="nav">
+  <a href="/" class="nav-logo">SQ</a>
+  <ul class="nav-links">
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <h1 class="hero-name">
-    Sorry Qin
-    <span class="chinese">覃佐睿</span>
-  </h1>
-
-  <p class="hero-tagline">
-    Postgraduate at <strong>HUST</strong> • AI & Computer Vision Researcher • Turning data into insights
-  </p>
-
-  <div class="pill-container">
-    <span class="pill pill-primary">🧠 AI Research</span>
-    <span class="pill pill-secondary">👁️ Computer Vision</span>
-    <span class="pill pill-accent">⚡ Deep Learning</span>
-    <span class="pill pill-teal">🔬 ML Systems</span>
-  </div>
-</div>
-
-<div class="content-wrapper">
-  <div class="card-grid">
-    <div class="card card-primary fade-in">
-      <div class="card-icon">📚</div>
-      <h2>About Me</h2>
-      <p>Graduate student at Huazhong University of Science and Technology, specializing in Artificial Intelligence and Computer Vision. Passionate about building intelligent systems that can perceive and understand visual data.</p>
-    </div>
-
-    <div class="card card-secondary fade-in">
-      <div class="card-icon">🛠️</div>
-      <h2>Technical Skills</h2>
-      <div class="skills-grid">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">TensorFlow</span>
-        <span class="skill-tag">OpenCV</span>
-        <span class="skill-tag">Deep Learning</span>
-        <span class="skill-tag">C++</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Git</span>
-      </div>
-    </div>
-
-    <div class="card card-purple fade-in">
-      <div class="card-icon">🎯</div>
-      <h2>Research Focus</h2>
-      <p>Exploring the intersection of machine learning and visual understanding. Current work involves developing novel approaches for image recognition, object detection, and visual reasoning systems.</p>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <img src="/images/qin.jpg" alt="Sorry Qin" class="hero-avatar">
+    <h1 class="hero-title">
+      Sorry Qin
+      <span class="sub">覃佐睿</span>
+    </h1>
+    <p class="hero-tagline">Graduate Student at HUST • AI & Computer Vision Researcher</p>
+    <div class="hero-cta">
+      <a href="#about" class="btn btn-primary">Learn More</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
     </div>
   </div>
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
 
-  <div class="card fade-in" style="margin-bottom: 40px;">
-    <h2 style="color: var(--primary);">📅 Timeline</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">Sep 2025</div>
-        <div class="timeline-content"><strong>Assistant Algorithm Engineer</strong> — Imaging Algorithm Center, VIVO</div>
+<!-- Main Content -->
+<main class="main">
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Passionate about building intelligent systems that understand visual data</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon primary">🎓</div>
+        <h3>Education</h3>
+        <p>Graduate student at Huazhong University of Science and Technology, specializing in AI and Computer Vision with a focus on practical applications.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Sep 2024</div>
-        <div class="timeline-content"><strong>Started Graduate Studies</strong> — Huazhong University of Science and Technology</div>
+      <div class="card">
+        <div class="card-icon pink">🔬</div>
+        <h3>Research Focus</h3>
+        <p>Exploring the intersection of machine learning and visual understanding. Current work involves image recognition, object detection, and visual reasoning.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Jun 2024</div>
-        <div class="timeline-content"><strong>Bachelor's Degree</strong> — Electronic Information Engineering</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2020 - 2024</div>
-        <div class="timeline-content">Undergraduate studies at HUST, Communications Engineering → AI/ML focus</div>
+      <div class="card">
+        <div class="card-icon amber">💼</div>
+        <h3>Experience</h3>
+        <p>Currently working as Assistant Algorithm Engineer at VIVO Imaging Algorithm Center, applying research to real-world computer vision challenges.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="contact-bar fade-in">
-    <a href="mailto:qinzuorui@outlook.com" class="contact-item">
-      <span class="contact-icon">📧</span>
-      qinzuorui@outlook.com
-    </a>
-    <a href="https://github.com/SorryQin" class="contact-item" target="_blank">
-      <span class="contact-icon">🐙</span>
-      GitHub
-    </a>
-    <a href="https://instagram.com/sorryqin2" class="contact-item" target="_blank">
-      <span class="contact-icon">📸</span>
-      Instagram
-    </a>
-  </div>
-</div>
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">Technologies and tools I work with</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon primary">🐍</div>
+        <h3>Programming</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">MATLAB</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon teal">🧠</div>
+        <h3>Deep Learning</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Keras</span>
+          <span class="skill-tag">OpenCV</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon pink">🖥️</div>
+        <h3>Tools & Platforms</h3>
+        <div class="skills-grid">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Journey</h2>
+      <p class="section-subtitle">Key milestones in my academic and professional path</p>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Sep 2025 - Present</div>
+          <div class="timeline-content">
+            Assistant Algorithm Engineer
+            <span>Imaging Algorithm Center, VIVO</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Sep 2024 - Present</div>
+          <div class="timeline-content">
+            Started Graduate Studies
+            <span>Huazhong University of Science and Technology</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Jun 2024</div>
+          <div class="timeline-content">
+            Bachelor's Degree
+            <span>Electronic Information Engineering</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2020 - 2024</div>
+          <div class="timeline-content">
+            Undergraduate Studies
+            <span>HUST, Communications Engineering → AI/ML focus</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Sep 2020</div>
+          <div class="timeline-content">
+            Journey Begins
+            <span>Started at Huazhong University of Science and Technology</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="contact-section">
+      <h2>Let's Connect</h2>
+      <p>Interested in collaboration or just want to say hello? Feel free to reach out!</p>
+      <div class="contact-links">
+        <a href="mailto:qinzuorui@outlook.com" class="contact-link">
+          📧 Email
+        </a>
+        <a href="https://github.com/SorryQin" class="contact-link" target="_blank">
+          🐙 GitHub
+        </a>
+        <a href="https://instagram.com/sorryqin2" class="contact-link" target="_blank">
+          📸 Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Sorry Qin • Built with passion & code</p>
+</footer>
 
 <script>
-// Fade-in animation on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
 </script>
