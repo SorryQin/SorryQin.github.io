@@ -2,8 +2,3 @@ title: SORRY QIN
 description: Personal portfolio of Sorry Qin - AI/Computer Vision researcher
 baseurl: ""
 url: "https://sorryqin.github.io"
-lang: en
-
-# GitHub Pages configuration
-markdown: kramdown
-highlighter: rouge
