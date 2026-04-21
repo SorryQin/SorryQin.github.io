@@ -575,3 +575,501 @@ img, video {
     --color-mfp-figure-small: #808080;
   }
 }
+
+/* ==========================================================================
+   CYBERPUNK THEME - Override for homepage
+   ========================================================================== */
+body.page {
+  background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 50%, #0a0a12 100%);
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+/* Override for cyberpunk - apply to homepage only */
+.page-template-page .navigation-wrapper {
+  background: rgba(10, 10, 18, 0.95);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.page-template-page .site-name a {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.page-template-page .top-navigation li a {
+  color: #b0b0b0;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.page-template-page .top-navigation li a:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+.page-template-page .top-navigation-current a {
+  color: #00ffff !important;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  text-align: center;
+  padding: 80px 20px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(0, 255, 255, 0.05) 0%, transparent 70%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      rgba(0, 255, 255, 0.03) 50px,
+      rgba(0, 255, 255, 0.03) 51px
+    );
+  pointer-events: none;
+}
+
+.hero-title {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 80px #00ffff;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  from {
+    text-shadow:
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 40px #00ffff;
+  }
+  to {
+    text-shadow:
+      0 0 20px #00ffff,
+      0 0 40px #00ffff,
+      0 0 60px #00ffff,
+      0 0 80px #00ffff;
+  }
+}
+
+.hero-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   TYPING ANIMATION
+   ========================================================================== */
+.typing-container {
+  display: inline-block;
+  position: relative;
+  min-height: 1.5em;
+}
+
+.typing-text {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: #8a2be2;
+  text-shadow: 0 0 10px #8a2be2;
+}
+
+.typing-text::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typing-text::after {
+    animation: none;
+  }
+  .typing-text::after {
+    content: '▌';
+  }
+}
+
+/* ==========================================================================
+   PROFILE IMAGE - CYBERPUNK STYLE
+   ========================================================================== */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  padding: 4px;
+  background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  border-radius: 50%;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.profile-image-wrapper img,
+.profile-image-wrapper .bio-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border: 3px solid #0a0a12;
+}
+
+.profile-glow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+  animation: pulse-glow 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ==========================================================================
+   CONTENT GRID - TWO COLUMN LAYOUT
+   ========================================================================== */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+@media (max-width: 900px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* ==========================================================================
+   BIO SECTION - CYBERPUNK CARD
+   ========================================================================== */
+.bio-card {
+  background: rgba(20, 20, 35, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.bio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+}
+
+.bio-card h2,
+.bio-card h3 {
+  font-family: 'Courier New', monospace;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.bio-card p {
+  color: #d0d0d0;
+  line-height: 1.8;
+}
+
+/* ==========================================================================
+   SKILLS SECTION - ANIMATED BARS
+   ========================================================================== */
+.skills-card {
+  background: rgba(20, 20, 35, 0.8);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.skills-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff00ff, transparent);
+}
+
+.skills-card h2,
+.skills-card h3 {
+  font-family: 'Courier New', monospace;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.skill-item {
+  margin-bottom: 20px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.skill-name {
+  color: #e0e0e0;
+}
+
+.skill-percent {
+  color: #8a2be2;
+  text-shadow: 0 0 5px #8a2be2;
+}
+
+.skill-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4px,
+    rgba(0, 0, 0, 0.3) 4px,
+    rgba(0, 0, 0, 0.3) 8px
+  );
+  z-index: 2;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #8a2be2, #ff00ff);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.skill-fill.animate {
+  animation: skill-glow 2s ease-in-out infinite;
+}
+
+@keyframes skill-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.7); }
+}
+
+/* ==========================================================================
+   SECTIONS BELOW HERO
+   ========================================================================== */
+.main-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section-card {
+  background: rgba(20, 20, 35, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+}
+
+.section-card h2 {
+  font-family: 'Courier New', monospace;
+  color: #8a2be2;
+  text-shadow: 0 0 5px #8a2be2;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.section-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section-card li {
+  color: #d0d0d0;
+  padding: 8px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.section-card li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+}
+
+/* ==========================================================================
+   NEWS TIMELINE
+   ========================================================================== */
+.news-item {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-date {
+  font-family: 'Courier New', monospace;
+  color: #00ffff;
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.news-content {
+  color: #d0d0d0;
+  flex: 1;
+}
+
+.news-content strong {
+  color: #ff00ff;
+}
+
+/* ==========================================================================
+   FOOTER - CYBERPUNK
+   ========================================================================== */
+body.page .footer-wrap {
+  background: linear-gradient(180deg, rgba(10, 10, 18, 0) 0%, #0a0a12 20%);
+  padding-top: 60px;
+}
+
+body.page .footer-wrap footer {
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  padding-top: 30px;
+}
+
+body.page .footer-icons li a {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  transition: all 0.3s ease;
+}
+
+body.page .footer-icons li a:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 15px #ff00ff;
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   SCANLINE EFFECT (subtle)
+   ========================================================================== */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* ==========================================================================
+   PAGE WRAPPER
+   ========================================================================== */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+}

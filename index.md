@@ -2,38 +2,140 @@
 layout: page
 ---
 
-# Sorry Qin (覃佐睿)
+<div class="page-wrapper">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="hero-title">SORRY QIN</h1>
+    <p class="hero-subtitle">覃佐睿</p>
+    <div class="typing-container">
+      <span class="typing-text" id="typing-target"></span>
+    </div>
+  </section>
 
+  <!-- Profile Image -->
+  <section class="profile-container">
+    <div class="profile-image-wrapper">
+      <div class="profile-glow"></div>
+      <img src="/images/qin.jpg" alt="Sorry Qin" class="bio-photo" width="180" height="180" loading="eager">
+    </div>
+  </section>
 
-<img src="images/qin.jpg" class="floatpic" loading="lazy">
+  <!-- Content Grid -->
+  <div class="content-grid">
+    <!-- Bio Card -->
+    <div class="bio-card">
+      <h2>// ABOUT_ME</h2>
+      <p>I am a postgraduate student at <strong>Huazhong University of Science and Technology</strong>, specializing in AI and Computer Vision.</p>
+      <p>My research focuses on developing intelligent systems that can perceive and understand visual data, with applications in real-world scenarios.</p>
+      <p>Feel free to reach out for collaborations: <a href="mailto:qinzuorui@outlook.com">qinzuorui@outlook.com</a></p>
+    </div>
 
-<br>
+    <!-- Skills Card -->
+    <div class="skills-card">
+      <h2>// TECHNICAL_SKILLS</h2>
 
-Here is **Sorry Qin (覃佐睿)**.<br>
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">Python</span>
+          <span class="skill-percent">95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="95"></div>
+        </div>
+      </div>
 
-I am a postgraduate student in Huazhong University of Science and Technology. 
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">Deep Learning / PyTorch</span>
+          <span class="skill-percent">90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="90"></div>
+        </div>
+      </div>
 
-If you are interested in any aspect of me, I am always open to discussions and collaborations. Feel free to e-mail me at qinzuorui@outlook.com.<br>
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">Computer Vision</span>
+          <span class="skill-percent">85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="85"></div>
+        </div>
+      </div>
 
----
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">TensorFlow / Keras</span>
+          <span class="skill-percent">75%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="75"></div>
+        </div>
+      </div>
 
-## Research Interests
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">C++</span>
+          <span class="skill-percent">60%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="60"></div>
+        </div>
+      </div>
 
-- AI-powered Systems
-- Machine Learning
-- Computer Vision
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">JavaScript / Web</span>
+          <span class="skill-percent">45%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="45"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-My current research focuses on Computer Vision. My interests are on the **Machine Learning** and its applications in **Computer Vision**.
-I wish to devote my talent to this meaningful cause and bring well-being to society.
+  <!-- Research Interests -->
+  <section class="main-content">
+    <div class="section-card">
+      <h2>// RESEARCH_INTERESTS</h2>
+      <ul>
+        <li>Artificial Intelligence Systems</li>
+        <li>Machine Learning & Deep Learning</li>
+        <li>Computer Vision & Image Recognition</li>
+        <li>Neural Network Architecture Design</li>
+      </ul>
+    </div>
 
----
+    <!-- News Timeline -->
+    <div class="section-card">
+      <h2>// NEWS_UPDATES</h2>
 
-## News and Updates
+      <div class="news-item">
+        <span class="news-date">Sep 2025</span>
+        <span class="news-content"><strong>Assistant Algorithm Engineer</strong> - Imaging Algorithm Center, VIVO</span>
+      </div>
 
-- **Sep 2025：**Assistant Algorithm Engineer in the Imaging Algorithm Center of VIVO
-- **Sep 2024：**Begin graduate studies at the School of Electronic Information and Communications at Huazhong University of Science and Technology.
-- **Jun 2024：**Very excited to Obtain a Bachelor of Engineering degree.
-- **Nov 2021：**Very excited to be selected to Communications Engineering major.
-- **Sep 2020：**Begin undergraduate studies at the School of Electronic Information and Communications at Huazhong University of Science and Technology. 
+      <div class="news-item">
+        <span class="news-date">Sep 2024</span>
+        <span class="news-content"><strong>Graduate Studies</strong> - Huazhong University of Science and Technology</span>
+      </div>
 
-<br>
+      <div class="news-item">
+        <span class="news-date">Jun 2024</span>
+        <span class="news-content"><strong>Bachelor's Degree</strong> - Electronic Information Engineering</span>
+      </div>
+
+      <div class="news-item">
+        <span class="news-date">Nov 2021</span>
+        <span class="news-content"><strong>Selected</strong> - Communications Engineering Major</span>
+      </div>
+
+      <div class="news-item">
+        <span class="news-date">Sep 2020</span>
+        <span class="news-content"><strong>Undergraduate Studies</strong> - HUST</span>
+      </div>
+    </div>
+  </section>
+</div>
