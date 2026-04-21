@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: home
 ---
 
 <style>
@@ -91,7 +91,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/images/qin.jpg') center center / cover no-repeat;
+  background: url('/images/qin.jpg') center 20% / cover no-repeat;
 }
 
 .hero-bg::before {
@@ -593,11 +593,6 @@ body {
   </section>
 
 </main>
-
-<!-- Footer -->
-<footer class="footer">
-  <p>© 2026 Sorry Qin • Built with passion & code</p>
-</footer>
 
 <script>
 // Smooth scroll
