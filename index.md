@@ -463,7 +463,6 @@ body {
   <a href="/" class="nav-logo">SQ</a>
   <ul class="nav-links">
     <li><a href="#about" class="active">About</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -515,45 +514,6 @@ body {
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Technical Skills</h2>
-      <p class="section-subtitle">Technologies and tools I work with</p>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon primary">🐍</div>
-        <h3>Programming</h3>
-        <div class="skills-grid">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">C++</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">MATLAB</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-icon teal">🧠</div>
-        <h3>Deep Learning</h3>
-        <div class="skills-grid">
-          <span class="skill-tag">PyTorch</span>
-          <span class="skill-tag">TensorFlow</span>
-          <span class="skill-tag">Keras</span>
-          <span class="skill-tag">OpenCV</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-icon pink">🖥️</div>
-        <h3>Tools & Platforms</h3>
-        <div class="skills-grid">
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Jupyter</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Timeline Section -->
   <section id="timeline" class="section">
