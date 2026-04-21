@@ -501,6 +501,7 @@ body {
     <li><a href="/publications/">Publications</a></li>
     <li><a href="/awards/">Awards</a></li>
     <li><a href="/hobbies/">Hobbies</a></li>
+    <li><a href="/blogs/">Blogs</a></li>
   </ul>
 </nav>
 
