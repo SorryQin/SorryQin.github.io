@@ -75,9 +75,9 @@ body {
 /* Hero Section */
 .hero {
   position: relative;
-  height: 85vh;
-  min-height: 600px;
-  max-height: 900px;
+  height: 90vh;
+  min-height: 650px;
+  max-height: 950px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/images/qin.jpg') 60% center / cover no-repeat;
+  background: url('/images/qin.jpg') 65% 15% / cover no-repeat;
 }
 
 .hero-bg::before {
