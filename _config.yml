@@ -1,4 +1,4 @@
-title: SORRY QIN | 覃佐睿
+title: SORRY QIN
 description: Personal portfolio of Sorry Qin - AI/Computer Vision researcher
 baseurl: ""
 url: "https://sorryqin.github.io"
@@ -6,14 +6,4 @@ lang: en
 
 # GitHub Pages configuration
 markdown: kramdown
-highlighter: null
-plugins:
-  - jekyll-seo-tag
-
-# Exclude unnecessary files
-exclude:
-  - .idea
-  - .gitignore
-  - Gemfile
-  - Gemfile.lock
-  - .sass-cache
+highlighter: rouge
