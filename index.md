@@ -465,6 +465,72 @@ body {
   transform: translateY(-2px);
 }
 
+.page-content h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.page-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 35px 0 15px;
+}
+
+.page-content p {
+  color: var(--text-light);
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+
+.page-content ul,
+.page-content ol {
+  color: var(--text-light);
+  padding-left: 25px;
+  margin: 0 0 20px;
+}
+
+.page-content li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.page-content a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.page-content a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+.page-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: var(--shadow);
+}
+
+.page-content strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.page-content hr {
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 40px 0;
+}
+
 /* Footer */
 .footer {
   background: #0f172a;
