@@ -81,6 +81,66 @@
   --color-syntax-bg-error: #e3d2d2;
 }
 
+/* Prevent overflow in flex/grid items */
+.flex-item,
+.grid-item,
+.article-wrap,
+.article-author-top,
+.article-author-bottom {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Break long words and URLs */
+a, p, h1, h2, h3, h4, h5, h6,
+li, td, th, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  /* Better CJK text handling */
+  line-break: auto;
+  word-break: break-word;
+}
+
+/* Responsive images */
+.article-wrap img,
+.article-wrap video,
+.article-wrap figure {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Icon Font Fallbacks
+   ========================================================================== */
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Emoji fallbacks when icon font fails */
+.icon-mail::before { content: "📧"; }
+.icon-github::before { content: "🐙"; }
+.icon-twitter::before { content: "🐦"; }
+.icon-instagram::before { content: "📷"; }
+.icon-facebook::before { content: "📘"; }
+.icon-linkedin::before { content: "💼"; }
+.icon-lastfm::before { content: "🎵"; }
+.icon-tumblr::before { content: "📝"; }
+
 /* ==========================================================================
    HTML5 Boilerplate Reset
    ========================================================================== */
@@ -338,7 +398,7 @@ html{background-color:var(--color-bg);font-family:'PT Serif',serif;font-color:va
 .site-name{margin:0 auto;width:100%;display:inline;float:left;width:83.33333333333334%;margin-left:8.333333333333334%;margin-right:8.333333333333334%;margin-bottom:1em;}
 .top-navigation{margin:0 auto;width:100%;display:inline;float:left;width:83.33333333333334%;margin-left:8.333333333333334%;margin-right:8.333333333333334%;margin-bottom:1em;}
 .top-navigation ul{list-style:none;margin:0;padding:0;}
-.top-navigation li{list-style-type:none;display:inline;margin-right:25px;}.top-navigation li a{decoration:none;border-bottom:0 solid transparent;-webkit-transition:color 0.2s, border-color 0.2s;-moz-transition:color 0.2s, border-color 0.2s;-ms-transition:color 0.2s, border-color 0.2s;-o-transition:color 0.2s, border-color 0.2s;transition:color 0.2s, border-color 0.2s;}
+.top-navigation li{list-style-type:none;display:inline;margin-right:25px;}.top-navigation li a{decoration:none;border-bottom:0 solid transparent;-webkit-transition:color 0.2s, border-color 0.2s;-moz-transition:color 0.2s, border-color 0.2s;-ms-transition:color 0.2s, border-color 0.2s;-o-transition:color 0.2s, border-color 0.2s;transition:color 0.2s, border-color 0.2s;word-wrap:break-word;overflow-wrap:break-word;max-width:100%;}
 .top-navigation-current{text-decoration: overline;}
 #main{counter-reset:captions;margin:0 auto;width:100%;*zoom:1;clear:both;margin-top:1em;}#main:before,#main:after{display:table; content:"";}
 #main:after{clear:both;}
