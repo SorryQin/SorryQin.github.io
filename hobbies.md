@@ -1,6 +1,7 @@
 ---
 layout: subpage
 title: Hobbies
+permalink: /hobbies/
 ---
 
 ## Basketball & Fitness

@@ -1,6 +1,7 @@
 ---
 layout: subpage
 title: Publications
+permalink: /publications/
 ---
 
 ## Degree Thesis

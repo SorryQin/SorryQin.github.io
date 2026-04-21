@@ -1,6 +1,7 @@
 ---
 layout: subpage
 title: Blogs
+permalink: /blogs/
 ---
 
 ## Blogs

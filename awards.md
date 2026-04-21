@@ -1,6 +1,7 @@
 ---
 layout: subpage
 title: Awards
+permalink: /awards/
 ---
 
 ## Scholarships
