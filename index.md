@@ -33,44 +33,64 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 100;
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-logo {
   font-size: 1.4rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, #818cf8, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
+  letter-spacing: -0.5px;
 }
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 35px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  padding: 8px 0;
+  position: relative;
 }
 
-.nav-links a:hover { color: var(--primary); }
-.nav-links a.active { color: var(--primary); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #818cf8, #c084fc);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
 
 /* Hero Section */
 .hero {
@@ -476,9 +496,11 @@ body {
 <nav class="nav">
   <a href="/" class="nav-logo">SQ</a>
   <ul class="nav-links">
-    <li><a href="#about" class="active">About</a></li>
-    <li><a href="#timeline">Timeline</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/publications/">Publications</a></li>
+    <li><a href="/awards/">Awards</a></li>
+    <li><a href="/hobbies/">Hobbies</a></li>
   </ul>
 </nav>
 
