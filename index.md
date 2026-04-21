@@ -91,7 +91,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/images/qin.jpg') center 20% / cover no-repeat;
+  background: url('/images/qin.jpg') 60% center / cover no-repeat;
 }
 
 .hero-bg::before {
@@ -120,12 +120,14 @@ body {
 }
 
 .hero-content {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   color: white;
   padding: 40px;
   max-width: 800px;
+  bottom: 80px;
+  left: 40px;
 }
 
 .hero-avatar {
