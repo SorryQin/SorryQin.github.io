@@ -57,7 +57,6 @@
   function init() {
     const canvas = document.getElementById('neuralCanvas');
     if (!canvas || !isWebGLSupported()) {
-      console.warn('WebGL not supported, neural network visualization disabled');
       if (canvas) canvas.style.display = 'none';
       return;
     }
@@ -88,8 +87,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     } catch (e) {
-      console.warn('WebGL renderer creation failed:', e);
-      canvas.style.display = 'none';
+      if (canvas) canvas.style.display = 'none';
       return;
     }
 

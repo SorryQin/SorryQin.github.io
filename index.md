@@ -2,19 +2,22 @@
 layout: page
 ---
 
+<!-- Skip to main content link for accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- Neural Network Canvas Background -->
 <canvas id="neuralCanvas"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <!-- Main Container - Wide Layout -->
-<div class="main-container">
+<div class="main-container" id="main-content" role="main">
   
   <!-- Profile Section - Horizontal Layout -->
   <div class="profile-section">
     <!-- Left: Avatar + Character -->
     <div class="avatar-section">
       <div class="avatar-frame">
-        <img src="images/qin.jpg" alt="Sorry Qin" class="avatar">
+        <img src="images/qin.jpg" alt="Profile photo of Sorry Qin (Qin Zuorui)" class="avatar">
       </div>
       <div class="avatar-glow"></div>
       <div class="status-indicator">
@@ -73,11 +76,11 @@ layout: page
       </p>
 
       <div class="contact-row">
-        <a href="mailto:qinzuorui@outlook.com" class="cyber-link">
-          <span class="link-icon">▶</span> qinzuorui@outlook.com
+        <a href="mailto:qinzuorui@outlook.com" class="cyber-link" aria-label="Send email to qinzuorui@outlook.com">
+          <span class="link-icon" aria-hidden="true">▶</span> <span class="link-text">Email: qinzuorui@outlook.com</span>
         </a>
-        <a href="https://github.com/SorryQin" class="cyber-link" target="_blank">
-          <span class="link-icon">▶</span> github.com/SorryQin
+        <a href="https://github.com/SorryQin" class="cyber-link" target="_blank" rel="noopener noreferrer" aria-label="Visit Sorry Qin's GitHub profile (opens in new tab)">
+          <span class="link-icon" aria-hidden="true">▶</span> <span class="link-text">GitHub: github.com/SorryQin</span>
         </a>
       </div>
 
@@ -176,6 +179,27 @@ layout: page
 </div>
 
 <style>
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00ffff;
+  color: #0a0a12;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  z-index: 10000;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #8a2be2;
+}
+
 /* ===== BASE ===== */
 body {
   background-color: #0a0a12;
@@ -393,18 +417,15 @@ body::before {
   font-size: 2rem;
   font-weight: 900;
   margin: 0;
-  background: linear-gradient(90deg, #00ffff, #8a2be2, #ff00ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #00ffff;
   letter-spacing: 3px;
-  filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.5));
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.6);
   animation: nameGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes nameGlow {
-  0% { filter: drop-shadow(0 0 10px rgba(0,255,255,0.5)); }
-  100% { filter: drop-shadow(0 0 25px rgba(138,43,226,0.7)); }
+  0% { text-shadow: 0 0 10px rgba(0,255,255,0.8), 0 0 20px rgba(138,43,226,0.4); }
+  100% { text-shadow: 0 0 20px rgba(0,255,255,1), 0 0 40px rgba(138,43,226,0.8); }
 }
 
 .name-chinese {
@@ -536,26 +557,16 @@ body::before {
 .stat-card {
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(138, 43, 226, 0.5);
+  border-top: 2px solid #8a2be2;
   padding: 0.8rem 1rem;
   text-align: center;
   position: relative;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   transition: all 0.3s ease;
 }
 
 .stat-card:hover {
   border-color: #00ffff;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-}
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #8a2be2, #00ffff);
 }
 
 .stat-value {
