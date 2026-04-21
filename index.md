@@ -91,10 +91,22 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background:
-    linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(236, 72, 153, 0.85) 100%),
-    url('/images/qin.jpg') center/cover no-repeat;
-  filter: blur(0px);
+  background: url('/images/qin.jpg') center center / cover no-repeat;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.75) 0%,
+    rgba(236, 72, 153, 0.7) 50%,
+    rgba(245, 158, 11, 0.65) 100%
+  );
 }
 
 .hero-bg::after {
@@ -104,7 +116,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.5) 100%);
 }
 
 .hero-content {
@@ -472,7 +484,6 @@ body {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <img src="/images/qin.jpg" alt="Sorry Qin" class="hero-avatar">
     <h1 class="hero-title">
       Sorry Qin
       <span class="sub">覃佐睿</span>
