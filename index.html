@@ -236,6 +236,28 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 
+/* Hero Image */
+.hero-image {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary);
+  box-shadow: 0 0 60px oklch(45% 0.15 275 / 0.3);
+  z-index: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
 /* Grid Pattern Background */
 .hero::before {
   content: '';
@@ -283,7 +305,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-content {
-  max-width: var(--content-width);
+  max-width: 60%;
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -669,6 +691,16 @@ h1, h2, h3, h4 {
     flex-wrap: wrap;
     gap: var(--space-8);
   }
+
+  .hero-image {
+    width: 250px;
+    height: 250px;
+    right: 5%;
+  }
+
+  .hero-content {
+    max-width: 55%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -678,9 +710,38 @@ h1, h2, h3, h4 {
     padding-bottom: var(--space-16);
   }
 
+  .hero-image {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    right: auto;
+    margin: 0 auto var(--space-8);
+    transform: none;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-label {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
   .hero-stats {
     flex-direction: column;
     gap: var(--space-6);
+    justify-content: center;
   }
 
   .section {
@@ -741,6 +802,10 @@ h1, h2, h3, h4 {
 <section class="hero">
   <div class="hero-orb hero-orb--1"></div>
   <div class="hero-orb hero-orb--2"></div>
+
+  <div class="hero-image">
+    <img src="/images/qin.jpg" alt="Sorry Qin">
+  </div>
 
   <div class="hero-content">
     <span class="hero-label">Available for opportunities</span>
