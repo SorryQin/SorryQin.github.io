@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorry Qin - AI Researcher & Engineer</title>
+  <meta name="description" content="Sorry Qin - Graduate Student at HUST specializing in AI and Computer Vision">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/fav.ico">
+</head>
+<body>
+
+<style>
+/* ============================================
+   CSS CUSTOM PROPERTIES (OKLCH Color System)
+   ============================================ */
+:root {
+  /* Brand Colors */
+  --primary: oklch(45% 0.15 275);
+  --primary-hover: oklch(55% 0.18 275);
+  --secondary: oklch(65% 0.18 340);
+  --accent: oklch(70% 0.15 165);
+
+  /* Neutrals (tinted toward primary hue) */
+  --bg-base: oklch(12% 0.015 275);
+  --bg-surface: oklch(16% 0.015 275);
+  --bg-elevated: oklch(20% 0.015 275);
+  --border: oklch(25% 0.01 275);
+  --text-primary: oklch(97% 0 0);
+  --text-secondary: oklch(70% 0.01 275);
+  --text-muted: oklch(50% 0.01 275);
+
+  /* Spacing Scale (4pt) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Typography */
+  --font-display: 'Sora', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+
+  /* Layout */
+  --nav-height: 72px;
+  --content-width: 1200px;
+  --text-width: 65ch;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient {
+  /* BANNED: No gradient text - using solid color instead */
+  color: var(--text-primary);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: oklch(12% 0.015 275 / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(var(--space-6), 5vw, var(--space-12));
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+
+.nav-logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color var(--duration-fast) ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width var(--duration-normal) var(--ease-out-expo);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Nav Toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.nav-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-base);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.nav-mobile.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-mobile a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-height) + var(--space-12)) clamp(var(--space-6), 5vw, var(--space-16));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid Pattern Background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 40%, transparent 100%);
+  opacity: 0.3;
+}
+
+/* Gradient Orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero-orb--1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.hero-orb--2 {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary);
+  bottom: 20%;
+  left: 5%;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+.hero-content {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--accent);
+  background: oklch(16% 0.015 165 / 0.3);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 100px;
+  margin-bottom: var(--space-6);
+  border: 1px solid oklch(25% 0.01 165);
+  animation: fadeInUp 0.6s var(--ease-out-expo) backwards;
+}
+
+.hero-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+  animation: fadeInUp 0.6s var(--ease-out-expo) 0.1s backwards;
+}
+
+.hero-title .name {
+  display: block;
+}
+
+.hero-title .chinese {
+  display: block;
+  font-size: 0.4em;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  margin-top: var(--space-2);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: var(--space-8);
+  animation: fadeInUp 0.6s var(--ease-out-expo) 0.2s backwards;
+}
+
+.hero-subtitle strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  animation: fadeInUp 0.6s var(--ease-out-expo) 0.3s backwards;
+}
+
+.hero-stats {
+  display: flex;
+  gap: var(--space-12);
+  margin-top: var(--space-16);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border);
+  animation: fadeInUp 0.6s var(--ease-out-expo) 0.4s backwards;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.hero-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.hero-stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--duration-fast) ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: var(--text-primary);
+}
+
+.btn--primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn--secondary:hover {
+  background: var(--bg-surface);
+  border-color: var(--text-muted);
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  padding: var(--space-24) clamp(var(--space-6), 5vw, var(--space-16));
+}
+
+.section--alt {
+  background: var(--bg-surface);
+}
+
+.section-header {
+  max-width: var(--content-width);
+  margin: 0 auto var(--space-12);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-3);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.section-desc {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: var(--text-width);
+}
+
+/* ============================================
+   ABOUT CARDS
+   ============================================ */
+.about-grid {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.about-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: var(--space-8);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.about-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.about-card__icon {
+  width: 48px;
+  height: 48px;
+  background: oklch(20% 0.015 275);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+  font-size: 1.5rem;
+}
+
+.about-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.about-card__text {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+.timeline {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  position: relative;
+  padding-left: var(--space-8);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--space-8);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-8) - 5px);
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-base);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+}
+
+.timeline-item__date {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--primary);
+  margin-bottom: var(--space-2);
+}
+
+.timeline-item__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.timeline-item__subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+}
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--primary), oklch(55% 0.18 340));
+  border-radius: 24px;
+  padding: var(--space-16) var(--space-12);
+  text-align: center;
+}
+
+.contact-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.contact-desc {
+  color: oklch(97% 0 0 / 0.8);
+  font-size: 1.125rem;
+  margin-bottom: var(--space-8);
+}
+
+.contact-links {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: oklch(0% 0 0 / 0.2);
+  color: var(--text-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all var(--duration-fast) ease;
+  border: 1px solid oklch(97% 0 0 / 0.1);
+}
+
+.contact-link:hover {
+  background: oklch(0% 0 0 / 0.3);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: var(--space-8);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer-text {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: flex;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + var(--space-12));
+    padding-bottom: var(--space-16);
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .section {
+    padding: var(--space-16) var(--space-6);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    padding: var(--space-12) var(--space-6);
+    border-radius: 16px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="/" class="nav-logo">SQ<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="/publications/">Publications</a></li>
+    <li><a href="/awards/">Awards</a></li>
+    <li><a href="/hobbies/">Hobbies</a></li>
+    <li><a href="/blogs/">Blogs</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Mobile Navigation -->
+<div class="nav-mobile">
+  <a href="#about">About</a>
+  <a href="#journey">Journey</a>
+  <a href="/publications/">Publications</a>
+  <a href="/awards/">Awards</a>
+  <a href="/hobbies/">Hobbies</a>
+  <a href="/blogs/">Blogs</a>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-orb hero-orb--1"></div>
+  <div class="hero-orb hero-orb--2"></div>
+
+  <div class="hero-content">
+    <span class="hero-label">Available for opportunities</span>
+
+    <h1 class="hero-title">
+      <span class="name">Sorry Qin</span>
+      <span class="chinese">覃佐睿</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      <strong>Graduate Student</strong> at Huazhong University of Science and Technology ·
+      <strong>AI & Computer Vision</strong> Researcher ·
+      <strong>Assistant Algorithm Engineer</strong> at VIVO
+    </p>
+
+    <div class="hero-actions">
+      <a href="#about" class="btn btn--primary">Learn More</a>
+      <a href="mailto:qinzuorui@outlook.com" class="btn btn--secondary">Get in Touch</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-value">2020</span>
+        <span class="hero-stat-label">Started at HUST</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">5+</span>
+        <span class="hero-stat-label">Years Research</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">CV</span>
+        <span class="hero-stat-label">Focus Area</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section">
+  <div class="section-header">
+    <span class="section-label">About</span>
+    <h2 class="section-title">Building Intelligent Systems</h2>
+    <p class="section-desc">
+      Passionate about creating AI systems that understand visual data and push the boundaries of computer vision research.
+    </p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card__icon">🎓</div>
+      <h3 class="about-card__title">Education</h3>
+      <p class="about-card__text">
+        Graduate student at Huazhong University of Science and Technology, specializing in AI and Computer Vision with a focus on practical applications.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-card__icon">🔬</div>
+      <h3 class="about-card__title">Research Focus</h3>
+      <p class="about-card__text">
+        Exploring the intersection of machine learning and visual understanding. Current work involves image recognition, object detection, and visual reasoning.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-card__icon">💼</div>
+      <h3 class="about-card__title">Experience</h3>
+      <p class="about-card__text">
+        Currently working as Assistant Algorithm Engineer at VIVO Imaging Algorithm Center, applying research to real-world computer vision challenges.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Journey Section -->
+<section id="journey" class="section section--alt">
+  <div class="section-header">
+    <span class="section-label">Journey</span>
+    <h2 class="section-title">Timeline</h2>
+    <p class="section-desc">
+      Key milestones in my academic and professional path.
+    </p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-item__date">Sep 2025 — Present</span>
+      <h3 class="timeline-item__title">Assistant Algorithm Engineer</h3>
+      <p class="timeline-item__subtitle">Imaging Algorithm Center, VIVO</p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-item__date">Sep 2024 — Present</span>
+      <h3 class="timeline-item__title">Started Graduate Studies</h3>
+      <p class="timeline-item__subtitle">Huazhong University of Science and Technology</p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-item__date">Jun 2024</span>
+      <h3 class="timeline-item__title">Bachelor's Degree</h3>
+      <p class="timeline-item__subtitle">Electronic Information Engineering</p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-item__date">2020 — 2024</span>
+      <h3 class="timeline-item__title">Undergraduate Studies</h3>
+      <p class="timeline-item__subtitle">HUST, Communications Engineering → AI/ML focus</p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="timeline-item__date">Sep 2020</span>
+      <h3 class="timeline-item__title">Journey Begins</h3>
+      <p class="timeline-item__subtitle">Started at Huazhong University of Science and Technology</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section">
+  <div class="contact-grid">
+    <h2 class="contact-title">Let's Connect</h2>
+    <p class="contact-desc">
+      Interested in collaboration or just want to say hello? Feel free to reach out.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:qinzuorui@outlook.com" class="contact-link">
+        📧 Email
+      </a>
+      <a href="https://github.com/SorryQin" target="_blank" rel="noopener" class="contact-link">
+        🐙 GitHub
+      </a>
+      <a href="https://instagram.com/sorryqin2" target="_blank" rel="noopener" class="contact-link">
+        📸 Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-text">© 2026 Sorry Qin · All Rights Reserved</p>
+</footer>
+
+<!-- Scripts -->
+<script>
+// Mobile Navigation
+const navToggle = document.querySelector('.nav-toggle');
+const navMobile = document.querySelector('.nav-mobile');
+
+navToggle?.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navMobile.classList.toggle('active');
+  document.body.style.overflow = navMobile.classList.contains('active') ? 'hidden' : '';
+});
+
+navMobile?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle?.classList.remove('active');
+    navMobile.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Observe sections for animation
+document.querySelectorAll('.about-card, .timeline-item').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1}s`;
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
