@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awards - Sorry Qin</title>
-  <meta name="description" content="Awards and Scholarships received by Sorry Qin">
+  <title>Publications - Sorry Qin</title>
+  <meta name="description" content="Publications by Sorry Qin - AI & Computer Vision Researcher at HUST">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/images/fav.ico">
 
   <style>
@@ -181,77 +184,52 @@
       margin: 0 auto;
     }
 
-    .award-list {
+    .pub-list {
       display: flex;
       flex-direction: column;
-      gap: var(--space-4);
-    }
-    .award-item {
-      display: flex;
-      align-items: flex-start;
       gap: var(--space-6);
+    }
+    .pub-item {
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: var(--space-6) var(--space-8);
+      padding: var(--space-8);
       transition: all var(--duration-normal) var(--ease-out-expo);
     }
-    .award-item:hover {
+    .pub-item:hover {
       border-color: var(--primary);
       transform: translateY(-4px);
     }
-    .award-item__icon {
-      width: 48px;
-      height: 48px;
-      background: oklch(16% 0.015 165 / 0.3);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      flex-shrink: 0;
-      border: 1px solid oklch(25% 0.01 165);
-    }
-    .award-item__content { flex: 1; }
-    .award-item__date {
+    .pub-item__type {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--primary);
-      margin-bottom: var(--space-1);
-    }
-    .award-item__title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: var(--space-1);
-    }
-    .award-item__desc { color: var(--text-secondary); font-size: 0.9375rem; }
-    .award-item__amount {
-      font-family: var(--font-mono);
-      font-size: 0.875rem;
       color: var(--accent);
-      background: oklch(16% 0.015 165 / 0.2);
-      padding: var(--space-1) var(--space-3);
-      border-radius: 100px;
-      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
     }
-
-    .total-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-3);
-      background: linear-gradient(135deg, var(--primary), oklch(55% 0.18 340));
-      border-radius: 100px;
-      padding: var(--space-4) var(--space-6);
-      margin-bottom: var(--space-8);
-    }
-    .total-badge__label {
-      font-size: 0.875rem;
-      opacity: 0.8;
-    }
-    .total-badge__value {
-      font-family: var(--font-mono);
+    .pub-item__title {
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+    .pub-item__author {
+      font-size: 0.9375rem;
+      color: var(--primary);
+      margin-bottom: var(--space-3);
+    }
+    .pub-item__desc {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+    .pub-item__advisor {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-muted);
     }
 
     .footer {
@@ -267,8 +245,6 @@
       .nav-mobile { display: flex; }
     }
     @media (max-width: 640px) {
-      .award-item { flex-direction: column; gap: var(--space-4); }
-      .award-item__amount { align-self: flex-start; }
       .content { padding: var(--space-8) var(--space-6) var(--space-16); }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -281,99 +257,59 @@
 </head>
 <body>
 
+<!-- Navigation -->
 <nav class="nav">
   <a href="/" class="nav-logo">SQ<span>.</span></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="/#journey">Journey</a></li>
-    <li><a href="/publications/">Publications</a></li>
-    <li><a href="/awards/" class="active">Awards</a></li>
-    <li><a href="/hobbies/">Hobbies</a></li>
-    <li><a href="/blogs/">Blogs</a></li>
+    <li><a href="/publications.html" class="active">Publications</a></li>
+    <li><a href="/awards.html">Awards</a></li>
+    <li><a href="/hobbies.html">Hobbies</a></li>
+    <li><a href="/blogs.html">Blogs</a></li>
   </ul>
   <button class="nav-toggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
+<!-- Mobile Navigation -->
 <div class="nav-mobile">
   <a href="/">Home</a>
   <a href="/#about">About</a>
   <a href="/#journey">Journey</a>
-  <a href="/publications/">Publications</a>
-  <a href="/awards/">Awards</a>
-  <a href="/hobbies/">Hobbies</a>
-  <a href="/blogs/">Blogs</a>
+  <a href="/publications.html">Publications</a>
+  <a href="/awards.html">Awards</a>
+  <a href="/hobbies.html">Hobbies</a>
+  <a href="/blogs.html">Blogs</a>
 </div>
 
+<!-- Page Header -->
 <header class="page-header">
   <div class="page-header__content">
-    <span class="page-label">Recognition</span>
-    <h1 class="page-title">Awards</h1>
-    <p class="page-desc">Scholarships and honors received throughout my academic journey.</p>
+    <span class="page-label">Research</span>
+    <h1 class="page-title">Publications</h1>
+    <p class="page-desc">Academic papers, thesis work, and research contributions in AI and Computer Vision.</p>
   </div>
 </header>
 
+<!-- Content -->
 <main class="content">
-  <div class="total-badge">
-    <span class="total-badge__label">Total Scholarship</span>
-    <span class="total-badge__value">¥7,800</span>
-  </div>
-
-  <div class="award-list">
-    <article class="award-item">
-      <div class="award-item__icon">🏆</div>
-      <div class="award-item__content">
-        <span class="award-item__date">November 2025</span>
-        <h2 class="award-item__title">Three Good Student</h2>
-        <p class="award-item__desc">Three Good Student at the school level</p>
-      </div>
-      <span class="award-item__amount">¥2,000</span>
-    </article>
-
-    <article class="award-item">
-      <div class="award-item__icon">📚</div>
-      <div class="award-item__content">
-        <span class="award-item__date">November 2024</span>
-        <h2 class="award-item__title">Third-Class Academic Scholarship</h2>
-        <p class="award-item__desc">Academic excellence recognition</p>
-      </div>
-      <span class="award-item__amount">¥4,000</span>
-    </article>
-
-    <article class="award-item">
-      <div class="award-item__icon">💪</div>
-      <div class="award-item__content">
-        <span class="award-item__date">June 2023</span>
-        <h2 class="award-item__title">Self-Strengthening Scholarship</h2>
-        <p class="award-item__desc">Self-improvement and personal growth</p>
-      </div>
-      <span class="award-item__amount">¥800</span>
-    </article>
-
-    <article class="award-item">
-      <div class="award-item__icon">🌟</div>
-      <div class="award-item__content">
-        <span class="award-item__date">October 2022</span>
-        <h2 class="award-item__title">Outstanding Student Leader Scholarship</h2>
-        <p class="award-item__desc">Leadership and student organization contributions</p>
-      </div>
-      <span class="award-item__amount">¥600</span>
-    </article>
-
-    <article class="award-item">
-      <div class="award-item__icon">📈</div>
-      <div class="award-item__content">
-        <span class="award-item__date">October 2021</span>
-        <h2 class="award-item__title">Academic Improvement Scholarship</h2>
-        <p class="award-item__desc">Significant academic progress</p>
-      </div>
-      <span class="award-item__amount">¥600</span>
+  <div class="pub-list">
+    <article class="pub-item">
+      <span class="pub-item__type">Degree Thesis</span>
+      <h2 class="pub-item__title">Research on Zero-Shot Image Recognition Algorithm Based on Visual Semantic Attention Mechanism</h2>
+      <p class="pub-item__author">Zuorui Qin</p>
+      <p class="pub-item__desc">
+        A thesis exploring zero-shot learning approaches for image recognition, leveraging visual-semantic alignment and attention mechanisms to enable recognition of unseen object categories.
+      </p>
+      <p class="pub-item__advisor">Advisor: Xinge You</p>
     </article>
   </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <p class="footer-text">© 2026 Sorry Qin · All Rights Reserved</p>
 </footer>
