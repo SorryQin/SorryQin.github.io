@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: home
 permalink: /startups/index.html
 title: Startups
 ---

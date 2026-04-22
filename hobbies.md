@@ -1,5 +1,5 @@
 ---
-layout: subpage
+layout: home
 title: Hobbies
 permalink: /hobbies/
 ---
