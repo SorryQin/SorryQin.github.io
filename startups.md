@@ -24,16 +24,21 @@ layout: null
   --bg-light: #f8fafc;
   --bg-card: #ffffff;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --nav-height: 70px;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg-light);
   color: var(--text-dark);
-  margin: 0;
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
@@ -41,44 +46,46 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 100;
-  padding: 0 40px;
+  z-index: 1000;
+  height: var(--nav-height);
+  padding: 0 clamp(16px, 4vw, 40px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-logo {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
   font-weight: 800;
   background: linear-gradient(135deg, #818cf8, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
-  gap: 35px;
+  gap: clamp(16px, 3vw, 35px);
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
   transition: all 0.3s;
   padding: 8px 0;
   position: relative;
+  white-space: nowrap;
 }
+
+.nav-links a:hover { color: white; }
 
 .nav-links a::after {
   content: '';
@@ -91,152 +98,204 @@ body {
   transition: width 0.3s;
 }
 
-.nav-links a:hover {
-  color: white;
+.nav-links a:hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 1001;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s;
+  border-radius: 2px;
 }
+
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.98);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.nav-mobile.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-mobile a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: color 0.3s;
+}
+
+.nav-mobile a:hover { color: #818cf8; }
 
 .page-header {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
-  padding: 120px 40px 60px;
+  padding: calc(var(--nav-height) + clamp(40px, 8vw, 80px)) clamp(16px, 4vw, 40px) clamp(30px, 5vw, 60px);
   text-align: center;
-  margin-top: 70px;
 }
 
 .page-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
   font-weight: 800;
   color: white;
   margin: 0;
 }
 
 .main {
+  flex: 1;
   max-width: 900px;
+  width: 100%;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: clamp(24px, 5vw, 60px) clamp(16px, 4vw, 40px);
 }
 
 .content-section {
   background: var(--bg-card);
-  border-radius: 20px;
-  padding: 40px;
+  border-radius: clamp(12px, 2vw, 20px);
+  padding: clamp(20px, 4vw, 40px);
   box-shadow: var(--shadow);
-  margin-bottom: 40px;
+  margin-bottom: clamp(20px, 4vw, 40px);
 }
 
 .content-section h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
   font-weight: 700;
   color: var(--text-dark);
-  margin: 0 0 25px;
-  padding-bottom: 15px;
+  margin: 0 0 clamp(16px, 3vw, 25px);
+  padding-bottom: clamp(10px, 2vw, 15px);
   border-bottom: 2px solid #e2e8f0;
 }
 
 .content-section h3 {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 600;
   color: var(--text-dark);
-  margin: 35px 0 15px;
+  margin: clamp(20px, 4vw, 35px) 0 clamp(10px, 2vw, 15px);
 }
 
-.content-section h3:first-of-type {
-  margin-top: 0;
-}
+.content-section h3:first-of-type { margin-top: 0; }
 
 .content-section p {
   color: var(--text-light);
   line-height: 1.8;
-  margin: 0 0 20px;
+  margin: 0 0 clamp(16px, 3vw, 20px);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
 .content-section ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 clamp(16px, 3vw, 20px);
 }
 
 .content-section li {
-  padding: 12px 0;
+  padding: clamp(10px, 2vw, 12px) 0;
   border-bottom: 1px solid #f1f5f9;
   color: var(--text-light);
   line-height: 1.7;
+  font-size: clamp(0.85rem, 1.7vw, 0.95rem);
 }
 
-.content-section li:last-child {
-  border-bottom: none;
-}
+.content-section li:last-child { border-bottom: none; }
 
 .content-section a {
   color: var(--primary);
   text-decoration: none;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .content-section a:hover {
   color: var(--secondary);
-  text-decoration: underline;
 }
 
-.content-section strong {
-  color: var(--text-dark);
-}
+.content-section strong { color: var(--text-dark); }
 
 .content-section hr {
   border: none;
   height: 1px;
   background: #e2e8f0;
-  margin: 35px 0;
-}
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 25px;
-}
-
-.image-grid img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+  margin: clamp(20px, 4vw, 35px) 0;
 }
 
 .team-list {
   background: #f8fafc;
   border-radius: 12px;
-  padding: 25px;
-  margin: 15px 0;
+  padding: clamp(16px, 3vw, 25px);
+  margin: clamp(10px, 2vw, 15px) 0;
 }
 
 .team-list p {
   margin: 0;
+  font-size: clamp(0.85rem, 1.7vw, 0.95rem);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(12px, 2vw, 20px);
+  margin-top: clamp(16px, 3vw, 25px);
+}
+
+.image-grid img {
+  width: 100%;
+  height: clamp(150px, 25vw, 200px);
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
 .footer {
   background: #0f172a;
   color: #94a3b8;
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   text-align: center;
-  margin-top: 40px;
+  margin-top: auto;
 }
 
 .footer p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
-@media (max-width: 768px) {
-  .nav { padding: 0 20px; }
-  .nav-links { gap: 20px; }
-  .page-header { padding: 100px 20px 50px; }
-  .main { padding: 40px 20px; }
-  .content-section { padding: 25px; }
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-mobile { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .page-header { padding-top: calc(var(--nav-height) + 30px); }
+  .content-section { padding: 20px; }
   .image-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -251,7 +310,21 @@ body {
     <li><a href="/hobbies/">Hobbies</a></li>
     <li><a href="/blogs/">Blogs</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile">
+  <a href="/">Home</a>
+  <a href="/#about">About</a>
+  <a href="/publications/">Publications</a>
+  <a href="/awards/">Awards</a>
+  <a href="/hobbies/">Hobbies</a>
+  <a href="/blogs/">Blogs</a>
+</div>
 
 <header class="page-header">
   <h1 class="page-title">Startups</h1>
@@ -320,6 +393,22 @@ body {
 <footer class="footer">
   <p>© 2026 Sorry Qin · All Rights Reserved</p>
 </footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.querySelector('.nav-mobile').classList.toggle('active');
+  document.body.style.overflow = document.querySelector('.nav-mobile').classList.contains('active') ? 'hidden' : '';
+});
+
+document.querySelectorAll('.nav-mobile a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav-toggle').classList.remove('active');
+    document.querySelector('.nav-mobile').classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+</script>
 
 </body>
 </html>
