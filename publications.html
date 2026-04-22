@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications - Sorry Qin</title>
+  <meta name="description" content="Publications by Sorry Qin - AI & Computer Vision Researcher at HUST">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/fav.ico">
+
+  <style>
+    :root {
+      --primary: oklch(45% 0.15 275);
+      --primary-hover: oklch(55% 0.18 275);
+      --secondary: oklch(65% 0.18 340);
+      --accent: oklch(70% 0.15 165);
+      --bg-base: oklch(12% 0.015 275);
+      --bg-surface: oklch(16% 0.015 275);
+      --bg-elevated: oklch(20% 0.015 275);
+      --border: oklch(25% 0.01 275);
+      --text-primary: oklch(97% 0 0);
+      --text-secondary: oklch(70% 0.01 275);
+      --text-muted: oklch(50% 0.01 275);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+      --font-display: 'Sora', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 300ms;
+      --nav-height: 72px;
+      --content-width: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-display);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--primary); color: var(--text-primary); }
+
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      background: oklch(12% 0.015 275 / 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(var(--space-6), 5vw, var(--space-12));
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+    .nav-logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: var(--space-8); list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color var(--duration-fast) ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width var(--duration-normal) var(--ease-out-expo);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--text-primary); }
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: var(--space-2);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      width: 24px; height: 2px;
+      background: var(--text-primary);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg-base);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--duration-normal) ease;
+    }
+    .nav-mobile.active { opacity: 1; pointer-events: auto; }
+    .nav-mobile a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .page-header {
+      padding: calc(var(--nav-height) + var(--space-16)) clamp(var(--space-6), 5vw, var(--space-16)) var(--space-12);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 40%, transparent 100%);
+      opacity: 0.2;
+    }
+    .page-header__content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .page-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-3);
+    }
+    .page-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: var(--space-4);
+    }
+    .page-desc {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+
+    .content {
+      padding: var(--space-12) clamp(var(--space-6), 5vw, var(--space-16)) var(--space-24);
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .pub-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    .pub-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .pub-item__type {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
+    }
+    .pub-item__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+    .pub-item__author {
+      font-size: 0.9375rem;
+      color: var(--primary);
+      margin-bottom: var(--space-3);
+    }
+    .pub-item__desc {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+    .pub-item__advisor {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      padding: var(--space-8);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-text { font-size: 0.875rem; color: var(--text-muted); }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-mobile { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .content { padding: var(--space-8) var(--space-6) var(--space-16); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="/" class="nav-logo">SQ<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#journey">Journey</a></li>
+    <li><a href="/publications/" class="active">Publications</a></li>
+    <li><a href="/awards/">Awards</a></li>
+    <li><a href="/hobbies/">Hobbies</a></li>
+    <li><a href="/blogs/">Blogs</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Navigation -->
+<div class="nav-mobile">
+  <a href="/">Home</a>
+  <a href="/#about">About</a>
+  <a href="/#journey">Journey</a>
+  <a href="/publications/">Publications</a>
+  <a href="/awards/">Awards</a>
+  <a href="/hobbies/">Hobbies</a>
+  <a href="/blogs/">Blogs</a>
+</div>
+
+<!-- Page Header -->
+<header class="page-header">
+  <div class="page-header__content">
+    <span class="page-label">Research</span>
+    <h1 class="page-title">Publications</h1>
+    <p class="page-desc">Academic papers, thesis work, and research contributions in AI and Computer Vision.</p>
+  </div>
+</header>
+
+<!-- Content -->
+<main class="content">
+  <div class="pub-list">
+    <article class="pub-item">
+      <span class="pub-item__type">Degree Thesis</span>
+      <h2 class="pub-item__title">Research on Zero-Shot Image Recognition Algorithm Based on Visual Semantic Attention Mechanism</h2>
+      <p class="pub-item__author">Zuorui Qin</p>
+      <p class="pub-item__desc">
+        A thesis exploring zero-shot learning approaches for image recognition, leveraging visual-semantic alignment and attention mechanisms to enable recognition of unseen object categories.
+      </p>
+      <p class="pub-item__advisor">Advisor: Xinge You</p>
+    </article>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-text">© 2026 Sorry Qin · All Rights Reserved</p>
+</footer>
+
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const navMobile = document.querySelector('.nav-mobile');
+navToggle?.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navMobile.classList.toggle('active');
+  document.body.style.overflow = navMobile.classList.contains('active') ? 'hidden' : '';
+});
+navMobile?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle?.classList.remove('active');
+    navMobile.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+</script>
+
+</body>
+</html>
