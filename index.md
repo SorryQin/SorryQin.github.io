@@ -685,6 +685,11 @@ body {
 
 </main>
 
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Sorry Qin · All Rights Reserved</p>
+</footer>
+
 <script>
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
