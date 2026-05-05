@@ -27,13 +27,6 @@
   --accent-bg-light: oklch(16% 0.015 165 / 0.2);
   --accent-border: oklch(25% 0.01 165);
 
-  /* Contact Section */
-  --contact-gradient-end: oklch(55% 0.18 340);
-  --contact-desc-color: oklch(97% 0 0 / 0.8);
-  --contact-link-bg: oklch(100% 0 0 / 0.15);
-  --contact-link-hover-bg: oklch(100% 0 0 / 0.25);
-  --contact-link-border: oklch(100% 0 0 / 0.1);
-
   /* Hero */
   --hero-image-glow: oklch(45% 0.15 275 / 0.3);
   --hero-grid-opacity: 0.3;
@@ -94,12 +87,6 @@
     --accent-bg: oklch(80% 0.08 160 / 0.25);
     --accent-bg-light: oklch(80% 0.08 160 / 0.15);
     --accent-border: oklch(65% 0.06 160);
-
-    --contact-gradient-end: oklch(55% 0.18 340);
-    --contact-desc-color: oklch(100% 0 0 / 0.85);
-    --contact-link-bg: oklch(100% 0 0 / 0.2);
-    --contact-link-hover-bg: oklch(100% 0 0 / 0.3);
-    --contact-link-border: oklch(100% 0 0 / 0.15);
 
     --hero-image-glow: oklch(42% 0.17 275 / 0.2);
     --hero-grid-opacity: 0.12;
