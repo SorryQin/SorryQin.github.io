@@ -24,9 +24,10 @@
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     align-items: center;
-    gap: clamp(var(--space-12), 5vw, var(--space-16));
+    justify-content: center;
+    gap: clamp(var(--space-8), 4vw, var(--space-12));
     padding: calc(var(--nav-height) + var(--space-12)) clamp(var(--space-6), 5vw, var(--space-16));
     position: relative;
     overflow: hidden;
