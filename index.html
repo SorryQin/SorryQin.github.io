@@ -117,6 +117,21 @@
     animation-delay: -5s;
   }
 
+  .hero-image-ring {
+    position: absolute;
+    inset: -8px;
+    border: 1.5px solid oklch(55% 0.18 275 / 0.25);
+    border-radius: 38% 62% 55% 45% / 42% 38% 62% 58%;
+    transform: rotate(-5deg);
+    animation: ringPulse 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes ringPulse {
+    0%, 100% { opacity: 0.4; transform: rotate(-5deg) scale(1); }
+    50% { opacity: 0.75; transform: rotate(-3deg) scale(1.03); }
+  }
+
   .hero-image {
     width: 100%;
     max-width: 420px;
@@ -194,6 +209,11 @@
 
   .hero-title .name {
     display: block;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: brightness(1.1);
   }
 
   .hero-title .chinese {
@@ -208,13 +228,22 @@
   .hero-subtitle {
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     color: var(--text-secondary);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-3);
     animation: fadeInUp 0.6s var(--ease-out-expo) 0.2s backwards;
   }
 
   .hero-subtitle strong {
     color: var(--text-primary);
     font-weight: 600;
+  }
+
+  .hero-accent {
+    width: 72px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    border-radius: 2px;
+    margin-bottom: var(--space-8);
+    animation: fadeInUp 0.6s var(--ease-out-expo) 0.25s backwards;
   }
 
   .hero-actions {
@@ -443,6 +472,11 @@
       max-width: 100%;
     }
 
+    .hero-accent {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .hero-label {
       margin-left: auto;
       margin-right: auto;
@@ -520,6 +554,8 @@
       Researching <strong>AI & Computer Vision</strong> with a focus on practical applications
     </p>
 
+    <div class="hero-accent"></div>
+
     <div class="hero-actions">
       <a href="#about" class="btn btn--primary">Learn More</a>
       <a href="#contact" class="btn btn--secondary">Get in Touch</a>
@@ -528,6 +564,7 @@
   </div>
 
   <div class="hero-image-wrapper">
+    <div class="hero-image-ring"></div>
     <div class="hero-image">
       <img src="/images/qin.jpg" alt="Sorry Qin" width="420" height="560">
     </div>
