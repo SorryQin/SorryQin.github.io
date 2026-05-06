@@ -63,10 +63,39 @@
 }
 
 /* ============================================
-   LIGHT THEME
+   LIGHT THEME (manual toggle + auto via system)
    ============================================ */
+[data-theme="light"] {
+  --primary: oklch(42% 0.17 275);
+  --primary-hover: oklch(48% 0.19 275);
+  --secondary: oklch(58% 0.18 340);
+  --accent: oklch(55% 0.14 160);
+
+  --bg-base: oklch(96% 0.005 275);
+  --bg-surface: oklch(99% 0 0);
+  --bg-elevated: oklch(100% 0 0);
+  --border: oklch(88% 0.01 275);
+  --text-primary: oklch(18% 0.015 275);
+  --text-secondary: oklch(40% 0.015 275);
+  --text-muted: oklch(55% 0.02 275);
+  --text-on-primary: oklch(97% 0 0);
+
+  --nav-bg: oklch(96% 0 0 / 0.85);
+  --icon-bg: oklch(93% 0.01 275);
+
+  --accent-bg: oklch(80% 0.08 160 / 0.25);
+  --accent-bg-light: oklch(80% 0.08 160 / 0.15);
+  --accent-border: oklch(65% 0.06 160);
+
+  --hero-image-glow: oklch(42% 0.17 275 / 0.2);
+  --hero-grid-opacity: 0.12;
+
+  --page-header-grid-opacity: 0.08;
+}
+
+/* Auto-detect system light preference */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme]) {
     --primary: oklch(42% 0.17 275);
     --primary-hover: oklch(48% 0.19 275);
     --secondary: oklch(58% 0.18 340);
@@ -93,6 +122,35 @@
 
     --page-header-grid-opacity: 0.08;
   }
+}
+
+/* ============================================
+   VIEW TRANSITIONS (page navigation)
+   ============================================ */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+
+::view-transition-old(root) {
+  animation: fade-out 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.35s cubic-bezier(0.4, 0, 1, 1);
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ============================================
@@ -233,6 +291,55 @@ h1, h2, h3, h4 {
 .nav-links a:hover::after,
 .nav-links a.active::after {
   width: 100%;
+}
+
+/* Theme Toggle */
+.nav-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) ease;
+  flex-shrink: 0;
+  margin-left: var(--space-4);
+}
+
+.nav-theme:hover {
+  border-color: var(--primary);
+  color: var(--text-primary);
+}
+
+.nav-theme svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.4s var(--ease-out-expo);
+}
+
+.nav-theme__sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.nav-theme__moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+[data-theme="light"] .nav-theme__sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="light"] .nav-theme__moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 /* Hamburger */
