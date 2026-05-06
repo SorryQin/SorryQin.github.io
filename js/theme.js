@@ -43,21 +43,12 @@
     }
   });
 
-  // Bind button
-  function bind() {
-    var btn = document.getElementById('theme-toggle');
-    if (btn) {
-      btn.addEventListener('click', toggle);
-    }
-  }
+  // Expose globally for onclick attribute fallback
+  window.__toggleTheme = toggle;
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      init();
-      bind();
-    });
+    document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
-    bind();
   }
 })();
