@@ -295,6 +295,7 @@ h1, h2, h3, h4 {
 
 /* Theme Toggle */
 .nav-theme {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
