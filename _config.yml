@@ -1,0 +1,19 @@
+# Jekyll Configuration
+title: Sorry Qin
+description: AI Researcher & Engineer
+url: https://sorryqin.com
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: /blogs/:year/:month/:day/:title/
+excerpt_separator: "<!--more-->"
+
+# Exclude from build
+exclude:
+  - README.md
+  - CLAUDE.md
+  - .claude/
+  - .impeccable.md
+  - content/
+  - images/logo/
