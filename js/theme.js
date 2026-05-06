@@ -1,17 +1,17 @@
 /**
- * Theme Toggle — dark / light / auto
- * Persists to localStorage, respects system preference in auto mode.
+ * Theme Toggle — dark / light
+ * Persists to localStorage, defaults to system preference on first visit.
  */
 (function () {
-  const STORAGE_KEY = 'theme';
-  const html = document.documentElement;
-  const systemMQ = window.matchMedia('(prefers-color-scheme: light)');
+  var STORAGE_KEY = 'theme';
+  var html = document.documentElement;
+  var systemMQ = window.matchMedia('(prefers-color-scheme: light)');
 
-  function getSystemTheme() {
+  function getSystem() {
     return systemMQ.matches ? 'light' : 'dark';
   }
 
-  function applyTheme(mode) {
+  function apply(mode) {
     if (mode === 'light') {
       html.setAttribute('data-theme', 'light');
     } else {
@@ -19,69 +19,45 @@
     }
   }
 
-  function getSavedTheme() {
-    return localStorage.getItem(STORAGE_KEY); // 'light' | 'dark' | 'auto' | null
+  function toggle() {
+    var current = html.hasAttribute('data-theme') ? 'light' : 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    apply(next);
+    localStorage.setItem(STORAGE_KEY, next);
   }
 
-  function saveTheme(mode) {
-    localStorage.setItem(STORAGE_KEY, mode);
-  }
-
-  function toggleTheme() {
-    const current = getSavedTheme() || 'auto';
-    const system = getSystemTheme();
-
-    let next;
-    if (current === 'auto') {
-      // Auto → opposite of current system
-      next = system === 'dark' ? 'light' : 'dark';
-    } else if (current === system) {
-      // Manual matches system → go to opposite
-      next = system === 'dark' ? 'light' : 'dark';
-    } else {
-      // Manual opposite of system → go to auto
-      next = 'auto';
-    }
-
-    // Cycle: dark → light → auto → dark
-    if (next === 'auto') {
-      applyTheme(getSystemTheme());
-      saveTheme('auto');
-    } else {
-      applyTheme(next);
-      saveTheme(next);
-    }
-  }
-
-  // Initialize
   function init() {
-    const saved = getSavedTheme();
-    if (saved === 'light' || saved === 'dark') {
-      applyTheme(saved);
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) {
+      // First visit — follow system
+      apply(getSystem());
     } else {
-      // Auto mode — follow system
-      applyTheme(getSystemTheme());
+      apply(saved);
     }
   }
 
-  // Listen for system changes (only relevant in auto mode)
+  // React to system changes (only when user hasn't manually set a preference)
   systemMQ.addEventListener('change', function () {
-    if (!getSavedTheme() || getSavedTheme() === 'auto') {
-      applyTheme(getSystemTheme());
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      apply(getSystem());
     }
   });
 
-  // Bind toggle button
-  document.addEventListener('DOMContentLoaded', function () {
-    init();
+  // Bind button
+  function bind() {
     var btn = document.getElementById('theme-toggle');
     if (btn) {
-      btn.addEventListener('click', toggleTheme);
+      btn.addEventListener('click', toggle);
     }
-  });
+  }
 
-  // Also init immediately in case DOMContentLoaded already fired
-  if (document.readyState !== 'loading') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      init();
+      bind();
+    });
+  } else {
     init();
+    bind();
   }
 })();
