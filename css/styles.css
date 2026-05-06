@@ -315,6 +315,17 @@ h1, h2, h3, h4 {
   transform: rotate(0deg) scale(1);
 }
 
+[data-theme="light"] .nav-theme {
+  background: oklch(90% 0.01 275);
+  border-color: oklch(78% 0.02 275);
+  color: oklch(30% 0.02 275);
+}
+
+[data-theme="light"] .nav-theme:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
