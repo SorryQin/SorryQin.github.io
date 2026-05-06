@@ -10,7 +10,7 @@
 (function () {
   // Replace with your deployed Worker URL after setting up the backend:
   // https://likes.YOUR-SUBDOMAIN.workers.dev/likes
-  var API_URL = null; // null = read-only mode until Worker is deployed
+  var API_URL = 'https://withered-frog-4070.hust-sorryqin.workers.dev/likes';
   var LIKED_KEY = 'sorryqin_liked';
   var container = document.getElementById('like-btn');
   if (!container) return;
