@@ -1,11 +1,11 @@
 /**
- * Like Counter Worker — deploy to Cloudflare Workers.
+ * Like Counter Worker — D1 backend.
  *
  * Setup:
- *   1. Create KV namespace: wrangler kv:namespace create "LIKES"
- *   2. Update wrangler.toml with the KV namespace ID
- *   3. Deploy: wrangler deploy
- *   4. Update API_URL in js/likes.js to point to your worker URL
+ *   1. D1 → Create database → name: likes-db
+ *   2. Worker → Settings → D1 Database Bindings → Add binding
+ *      Variable: DB  /  D1 database: likes-db
+ *   3. Paste this code → Save and Deploy
  */
 
 export default {
@@ -22,18 +22,27 @@ export default {
     }
 
     if (url.pathname === '/likes') {
+      await env.DB.exec(
+        'CREATE TABLE IF NOT EXISTS likes (id TEXT PRIMARY KEY, count INTEGER DEFAULT 0)'
+      );
+
       if (request.method === 'GET') {
-        var count = await env.LIKES.get('count') || '0';
-        return new Response(JSON.stringify({ count: parseInt(count) }), {
+        var row = await env.DB.prepare(
+          'SELECT count FROM likes WHERE id = ?'
+        ).bind('main').first();
+        return new Response(JSON.stringify({ count: row ? row.count : 0 }), {
           headers: { 'Content-Type': 'application/json', ...cors },
         });
       }
 
       if (request.method === 'POST') {
-        var current = parseInt(await env.LIKES.get('count') || '0');
-        var next = current + 1;
-        await env.LIKES.put('count', String(next));
-        return new Response(JSON.stringify({ count: next }), {
+        await env.DB.prepare(
+          'INSERT INTO likes (id, count) VALUES (?, 1) ON CONFLICT(id) DO UPDATE SET count = count + 1'
+        ).bind('main').run();
+        var updated = await env.DB.prepare(
+          'SELECT count FROM likes WHERE id = ?'
+        ).bind('main').first();
+        return new Response(JSON.stringify({ count: updated.count }), {
           headers: { 'Content-Type': 'application/json', ...cors },
         });
       }
