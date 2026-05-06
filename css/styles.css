@@ -320,6 +320,7 @@ h1, h2, h3, h4 {
   width: 18px;
   height: 18px;
   position: absolute;
+  pointer-events: none;
   transition: opacity 0.3s ease, transform 0.4s var(--ease-out-expo);
 }
 
