@@ -3,11 +3,11 @@
  */
 (function () {
   var pages = {
-    '/':                { label: 'Home',         desc: 'About, Timeline, Contact' },
-    '/publications.html': { label: 'Publications', desc: 'Zero-Shot Image Recognition thesis' },
-    '/awards.html':     { label: 'Awards',       desc: '6 scholarships, ¥16,000 total' },
-    '/hobbies.html':    { label: 'Hobbies',      desc: 'Basketball, Fitness & my pet turtle' },
-    '/blogs.html':      { label: 'Blogs',        desc: 'Thoughts on AI, CV, and research' }
+    '/':                { label: 'Home',         desc: 'About me, journey & contact' },
+    '/publications.html': { label: 'Publications', desc: 'Published papers and thesis' },
+    '/awards.html':     { label: 'Awards',       desc: 'Scholarships and honors' },
+    '/hobbies.html':    { label: 'Hobbies',      desc: 'Basketball, fitness & my pet' },
+    '/blogs.html':      { label: 'Blogs',        desc: 'Reflections on life and work' }
   };
 
   var preloaded = {};
@@ -44,7 +44,7 @@
     var t = getTooltip();
     t.innerHTML = [
       '<div style="font-size:0.75rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">' + p.label + '</div>',
-      '<div style="font-size:0.875rem;color:var(--text-secondary);line-height:1.4;white-space:nowrap;">' + p.desc + '</div>',
+      '<div style="font-size:0.875rem;color:var(--text-secondary);line-height:1.4;">' + p.desc + '</div>',
     ].join('');
     t.style.left = x + 'px';
     t.style.top = (y + 28) + 'px';
