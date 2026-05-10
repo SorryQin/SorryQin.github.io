@@ -4,8 +4,8 @@
 (function () {
   var pages = {
     '/':                { label: 'Home',         desc: 'About me, journey & contact' },
-    '/publications.html': { label: 'Publications', desc: 'Published papers and thesis' },
-    '/awards.html':     { label: 'Awards',       desc: 'Scholarships and honors' },
+    '/awards.html':     { label: 'Awards',       desc: 'Publications, scholarships and honors' },
+    '/activities.html': { label: 'Activities',   desc: 'Sports, volunteer, competitions & events' },
     '/hobbies.html':    { label: 'Hobbies',      desc: 'Basketball, fitness & my pet' },
     '/blogs.html':      { label: 'Blogs',        desc: 'Reflections on life and work' }
   };
