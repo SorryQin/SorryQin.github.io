@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awards - Sorry Qin</title>
-  <meta name="description" content="Awards and Scholarships received by Sorry Qin">
+  <title>Awards & Publications - Sorry Qin</title>
+  <meta name="description" content="Publications, scholarships and honors received by Sorry Qin">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,77 @@
   <link rel="stylesheet" href="/css/styles.css">
 
   <style>
+    .section-divider {
+      max-width: var(--content-width);
+      margin: var(--space-16) auto var(--space-8);
+      padding: 0 clamp(var(--space-6), 5vw, var(--space-16));
+    }
+    .section-divider__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-3);
+    }
+    .section-divider__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .pub-list {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 clamp(var(--space-6), 5vw, var(--space-16));
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .pub-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    .pub-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .pub-item__type {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
+    }
+    .pub-item__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+    .pub-item__author {
+      font-size: 0.9375rem;
+      color: var(--primary);
+      margin-bottom: var(--space-3);
+    }
+    .pub-item__desc {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+    .pub-item__advisor {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
     .award-list {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 clamp(var(--space-6), 5vw, var(--space-16));
       display: flex;
       flex-direction: column;
       gap: var(--space-4);
@@ -67,7 +137,7 @@
       border-radius: 100px;
       white-space: nowrap;
     }
-
+    .bottom-pad { padding-bottom: var(--space-24); }
     @media (max-width: 640px) {
       .award-item { flex-direction: column; gap: var(--space-4); }
       .award-item__amount { align-self: flex-start; }
@@ -80,8 +150,8 @@
   <a href="/" class="nav-logo">SQ<span>.</span></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/publications.html">Publications</a></li>
     <li><a href="/awards.html" class="active">Awards</a></li>
+    <li><a href="/activities.html">Activities</a></li>
     <li><a href="/hobbies.html">Hobbies</a></li>
     <li><a href="/blogs.html">Blogs</a></li>
   </ul>
@@ -96,113 +166,127 @@
 
 <div class="nav-mobile">
   <a href="/">Home</a>
-  <a href="/publications.html">Publications</a>
   <a href="/awards.html">Awards</a>
+  <a href="/activities.html">Activities</a>
   <a href="/hobbies.html">Hobbies</a>
   <a href="/blogs.html">Blogs</a>
 </div>
 
 <header class="page-header">
   <div class="page-header__content">
-    <span class="page-label">Recognition</span>
-    <h1 class="page-title">Awards</h1>
-    <p class="page-desc">Scholarships and honors received throughout my academic journey.</p>
+    <span class="page-label">Research & Recognition</span>
+    <h1 class="page-title">Awards & Publications</h1>
+    <p class="page-desc">Academic papers, scholarships, and honors throughout my journey.</p>
   </div>
 </header>
 
-<main class="content">
-  <div class="award-list">
-    <article class="award-item">
-      <div class="award-item__icon">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="8" r="6"/>
-          <path d="M15.48 12.62L18 20l-1.72-.98L12 17.22 7.72 19.02 6 20l2.52-7.38"/>
-        </svg>
-      </div>
-      <div class="award-item__content">
-        <span class="award-item__date">October 2025</span>
-        <h2 class="award-item__title">Second-Class Academic Scholarship</h2>
-        <p class="award-item__desc">Academic excellence recognition</p>
-      </div>
-      <span class="award-item__amount">&yen;8,000</span>
-    </article>
+<!-- Publications -->
+<div class="section-divider">
+  <span class="section-divider__label">Publications</span>
+  <h2 class="section-divider__title">Research Work</h2>
+</div>
+<main class="pub-list">
+  <article class="pub-item">
+    <span class="pub-item__type">Degree Thesis</span>
+    <h2 class="pub-item__title">Research on Zero-Shot Image Recognition Algorithm Based on Visual Semantic Attention Mechanism</h2>
+    <p class="pub-item__author">Zuorui Qin</p>
+    <p class="pub-item__desc">
+      A thesis exploring zero-shot learning approaches for image recognition, leveraging visual-semantic alignment and attention mechanisms to enable recognition of unseen object categories.
+    </p>
+    <p class="pub-item__advisor">Advisor: Xinge You</p>
+  </article>
+</main>
 
-    <article class="award-item">
-      <div class="award-item__icon">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 9H4a2 2 0 01-2-2V5a2 2 0 012-2h2"/>
-          <path d="M18 9h2a2 2 0 002-2V5a2 2 0 00-2-2h-2"/>
-          <path d="M12 16v4"/>
-          <path d="M8 20h8"/>
-          <path d="M7 3h10v6a5 5 0 01-10 0V3z"/>
-        </svg>
-      </div>
-      <div class="award-item__content">
-        <span class="award-item__date">November 2025</span>
-        <h2 class="award-item__title">Three Good Student</h2>
-        <p class="award-item__desc">Three Good Student at the school level</p>
-      </div>
-      <span class="award-item__amount">&yen;2,000</span>
-    </article>
+<!-- Scholarships -->
+<div class="section-divider">
+  <span class="section-divider__label">Scholarships</span>
+  <h2 class="section-divider__title">Honors & Awards</h2>
+</div>
+<main class="award-list bottom-pad">
+  <article class="award-item">
+    <div class="award-item__icon">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="6"/>
+        <path d="M15.48 12.62L18 20l-1.72-.98L12 17.22 7.72 19.02 6 20l2.52-7.38"/>
+      </svg>
+    </div>
+    <div class="award-item__content">
+      <span class="award-item__date">October 2025</span>
+      <h2 class="award-item__title">Second-Class Academic Scholarship</h2>
+      <p class="award-item__desc">Academic excellence recognition</p>
+    </div>
+    <span class="award-item__amount">&yen;8,000</span>
+  </article>
 
-    <article class="award-item">
-      <div class="award-item__icon">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
-        </svg>
-      </div>
-      <div class="award-item__content">
-        <span class="award-item__date">November 2024</span>
-        <h2 class="award-item__title">Third-Class Academic Scholarship</h2>
-        <p class="award-item__desc">Academic excellence recognition</p>
-      </div>
-      <span class="award-item__amount">&yen;4,000</span>
-    </article>
+  <article class="award-item">
+    <div class="award-item__icon">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9H4a2 2 0 01-2-2V5a2 2 0 012-2h2"/><path d="M18 9h2a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><path d="M12 16v4"/><path d="M8 20h8"/><path d="M7 3h10v6a5 5 0 01-10 0V3z"/>
+      </svg>
+    </div>
+    <div class="award-item__content">
+      <span class="award-item__date">November 2025</span>
+      <h2 class="award-item__title">Three Good Student</h2>
+      <p class="award-item__desc">Three Good Student at the school level</p>
+    </div>
+    <span class="award-item__amount">&yen;2,000</span>
+  </article>
 
-    <article class="award-item">
-      <div class="award-item__icon">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="13 2 3 14h7l-2 8 11-12h-7l2-8z"/>
-        </svg>
-      </div>
-      <div class="award-item__content">
-        <span class="award-item__date">June 2023</span>
-        <h2 class="award-item__title">Self-Strengthening Scholarship</h2>
-        <p class="award-item__desc">Self-improvement and personal growth</p>
-      </div>
-      <span class="award-item__amount">&yen;800</span>
-    </article>
+  <article class="award-item">
+    <div class="award-item__icon">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+      </svg>
+    </div>
+    <div class="award-item__content">
+      <span class="award-item__date">November 2024</span>
+      <h2 class="award-item__title">Third-Class Academic Scholarship</h2>
+      <p class="award-item__desc">Academic excellence recognition</p>
+    </div>
+    <span class="award-item__amount">&yen;4,000</span>
+  </article>
 
-    <article class="award-item">
-      <div class="award-item__icon">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-        </svg>
-      </div>
-      <div class="award-item__content">
-        <span class="award-item__date">October 2022</span>
-        <h2 class="award-item__title">Outstanding Student Leader Scholarship</h2>
-        <p class="award-item__desc">Leadership and student organization contributions</p>
-      </div>
-      <span class="award-item__amount">&yen;600</span>
-    </article>
+  <article class="award-item">
+    <div class="award-item__icon">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="13 2 3 14h7l-2 8 11-12h-7l2-8z"/>
+      </svg>
+    </div>
+    <div class="award-item__content">
+      <span class="award-item__date">June 2023</span>
+      <h2 class="award-item__title">Self-Strengthening Scholarship</h2>
+      <p class="award-item__desc">Self-improvement and personal growth</p>
+    </div>
+    <span class="award-item__amount">&yen;800</span>
+  </article>
 
-    <article class="award-item">
-      <div class="award-item__icon">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-          <polyline points="17 6h6v6"/>
-        </svg>
-      </div>
-      <div class="award-item__content">
-        <span class="award-item__date">October 2021</span>
-        <h2 class="award-item__title">Academic Improvement Scholarship</h2>
-        <p class="award-item__desc">Significant academic progress</p>
-      </div>
-      <span class="award-item__amount">&yen;600</span>
-    </article>
-  </div>
+  <article class="award-item">
+    <div class="award-item__icon">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    </div>
+    <div class="award-item__content">
+      <span class="award-item__date">October 2022</span>
+      <h2 class="award-item__title">Outstanding Student Leader Scholarship</h2>
+      <p class="award-item__desc">Leadership and student organization contributions</p>
+    </div>
+    <span class="award-item__amount">&yen;600</span>
+  </article>
+
+  <article class="award-item">
+    <div class="award-item__icon">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6h6v6"/>
+      </svg>
+    </div>
+    <div class="award-item__content">
+      <span class="award-item__date">October 2021</span>
+      <h2 class="award-item__title">Academic Improvement Scholarship</h2>
+      <p class="award-item__desc">Significant academic progress</p>
+    </div>
+    <span class="award-item__amount">&yen;600</span>
+  </article>
 </main>
 
 <footer class="footer">
