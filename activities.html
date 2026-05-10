@@ -60,9 +60,14 @@
       margin-bottom: var(--space-6);
       max-width: var(--text-width);
     }
+    .act-item__note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: var(--space-2);
+    }
     .act-photos {
       display: grid;
-      gap: var(--space-3);
+      gap: var(--space-4);
     }
     .act-photos--2 {
       grid-template-columns: 3fr 2fr;
@@ -75,23 +80,33 @@
     }
     .act-photos img {
       width: 100%;
-      height: 260px;
-      object-fit: cover;
       border-radius: 12px;
       background: var(--bg-surface);
     }
-    .act-photos--2 img,
-    .act-photos--2r img {
-      height: 280px;
+    .act-photos--tall img {
+      height: 420px;
+      object-fit: cover;
+      object-position: top center;
     }
-    .act-photos--1 img {
-      max-height: 400px;
+    .act-photos--mid img {
+      height: 320px;
+      object-fit: cover;
       object-position: center 30%;
+    }
+    .act-photos--wide img {
+      height: 280px;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .act-photos--bottom img {
+      object-position: center 80%;
     }
     .bottom-pad { padding-bottom: var(--space-24); }
     @media (max-width: 640px) {
       .act-photos--2, .act-photos--2r { grid-template-columns: 1fr; }
-      .act-photos img { height: 220px; }
+      .act-photos--tall img { height: 300px; }
+      .act-photos--mid img { height: 240px; }
+      .act-photos--wide img { height: 220px; }
     }
   </style>
 </head>
@@ -133,7 +148,7 @@
     <span class="act-item__date">2025</span>
     <h3 class="act-item__title">BYD China Youth Run @ HUST</h3>
     <p class="act-item__desc">比亚迪中国青年跑华中科技大学站暨 2025 华中地区 MBA 健康跑。</p>
-    <div class="act-photos act-photos--2">
+    <div class="act-photos act-photos--2 act-photos--wide">
       <img src="/images/activities/byd-run-1.jpg" alt="BYD Youth Run" loading="lazy">
       <img src="/images/activities/byd-run-2.jpg" alt="BYD Youth Run" loading="lazy">
     </div>
@@ -143,8 +158,8 @@
     <span class="act-item__date">2025</span>
     <h3 class="act-item__title">HUST Neon Night Run</h3>
     <p class="act-item__desc">华中科技大学荧光夜跑，用脚步点亮校园。</p>
-    <div class="act-photos act-photos--1">
-      <img src="/images/activities/neon-run-2025.png" alt="2025 Neon Night Run" loading="lazy">
+    <div class="act-photos act-photos--1 act-photos--mid">
+      <img src="/images/activities/neon-run-2025.jpg" alt="2025 Neon Night Run" loading="lazy">
     </div>
   </div>
 
@@ -152,7 +167,7 @@
     <span class="act-item__date">2024</span>
     <h3 class="act-item__title">HUST Graduation Cup Basketball</h3>
     <p class="act-item__desc">华中科技大学电信学院毕业杯篮球赛。</p>
-    <div class="act-photos act-photos--1">
+    <div class="act-photos act-photos--1 act-photos--wide">
       <img src="/images/activities/graduation-basketball.jpg" alt="Graduation Cup Basketball" loading="lazy">
     </div>
   </div>
@@ -161,7 +176,7 @@
     <span class="act-item__date">2024</span>
     <h3 class="act-item__title">HUST Jidian Cup 3v3 Basketball</h3>
     <p class="act-item__desc">华中科技大学集电杯 3v3 篮球赛。</p>
-    <div class="act-photos act-photos--2r">
+    <div class="act-photos act-photos--2r act-photos--wide">
       <img src="/images/activities/jidian-3v3-1.jpg" alt="3v3 Basketball" loading="lazy">
       <img src="/images/activities/jidian-3v3-2.jpg" alt="3v3 Basketball Team" loading="lazy">
     </div>
@@ -176,8 +191,8 @@
   <div class="act-item">
     <span class="act-item__date">2021</span>
     <h3 class="act-item__title">HUST Spring Long-Distance Run 5Km</h3>
-    <p class="act-item__desc">华中科技大学春季长跑节暨华中地区 MBA 健康跑 5 公里。</p>
-    <div class="act-photos act-photos--1">
+    <p class="act-item__desc">华中科技大学春季长跑节暨华中地区 MBA 健康跑 5 公里。左 1 为时任校长李元元院士。</p>
+    <div class="act-photos act-photos--1 act-photos--tall act-photos--bottom">
       <img src="/images/activities/spring-run-2021.jpg" alt="Spring Run 2021" loading="lazy">
     </div>
   </div>
@@ -198,18 +213,9 @@
     <span class="act-item__date">2022</span>
     <h3 class="act-item__title">Outstanding Nucleic Acid Testing Volunteer</h3>
     <p class="act-item__desc">核酸检测优秀志愿者，在疫情期间为校园防疫贡献力量。</p>
-    <div class="act-photos act-photos--2">
+    <div class="act-photos act-photos--2 act-photos--wide">
       <img src="/images/activities/covid-volunteer-1.jpg" alt="COVID Volunteer" loading="lazy">
       <img src="/images/activities/covid-volunteer-2.jpg" alt="COVID Volunteer Team" loading="lazy">
-    </div>
-  </div>
-
-  <div class="act-item">
-    <span class="act-item__date">2020 – Present</span>
-    <h3 class="act-item__title">Voluntary Blood Donation</h3>
-    <p class="act-item__desc">多次参加武汉血液中心义务献全血。</p>
-    <div class="act-photos act-photos--1">
-      <img src="/images/activities/blood-donation.jpg" alt="Blood Donation" loading="lazy">
     </div>
   </div>
 </div>
@@ -223,9 +229,6 @@
     <span class="act-item__date">2025</span>
     <h3 class="act-item__title">HUST Youth Garden Fishing Contest — 3rd Place</h3>
     <p class="act-item__desc">华中科技大学首届青年园垂钓大赛三等奖。</p>
-    <div class="act-photos act-photos--1">
-      <img src="/images/activities/fishing-contest.jpg" alt="Fishing Contest" loading="lazy">
-    </div>
   </div>
 
   <div class="act-item">
@@ -256,47 +259,45 @@
     <span class="act-item__date">2025</span>
     <h3 class="act-item__title">16th HUST Entrepreneur Forum (Wuhan)</h3>
     <p class="act-item__desc">华中科技大学第十六届企业家（武汉）论坛。</p>
+    <div class="act-photos act-photos--1 act-photos--mid">
+      <img src="/images/activities/entrepreneur-forum.jpg" alt="Entrepreneur Forum 2025" loading="lazy">
+    </div>
   </div>
 
   <div class="act-item">
     <span class="act-item__date">2025</span>
     <h3 class="act-item__title">3rd World Metaverse Conference</h3>
     <p class="act-item__desc">第三届世界元宇宙大会（参会 + 志愿者）。</p>
+    <div class="act-photos act-photos--2 act-photos--wide">
+      <img src="/images/activities/metaverse-conf-1.jpg" alt="Metaverse Conference" loading="lazy">
+      <img src="/images/activities/metaverse-conf-2.jpg" alt="Metaverse Conference" loading="lazy">
+    </div>
   </div>
 
   <div class="act-item">
     <span class="act-item__date">2021</span>
     <h3 class="act-item__title">Zhongyuan Electronics Internship</h3>
     <p class="act-item__desc">中原电子公司实习，接触工程实践与产业应用。</p>
-    <div class="act-photos act-photos--1">
+    <div class="act-photos act-photos--1 act-photos--tall act-photos--bottom">
       <img src="/images/activities/internship.jpg" alt="Internship at Zhongyuan Electronics" loading="lazy">
     </div>
   </div>
 
   <div class="act-item">
-    <span class="act-item__date">2020</span>
+    <span class="act-item__date">2019</span>
     <h3 class="act-item__title">Admission Video Recording</h3>
     <p class="act-item__desc">参与录制华中科技大学招生宣传视频。</p>
-    <div class="act-photos act-photos--1">
+    <div class="act-photos act-photos--1 act-photos--tall">
       <img src="/images/activities/admission-video.png" alt="Admission Video Recording" loading="lazy">
     </div>
   </div>
 
   <div class="act-item">
-    <span class="act-item__date">2020</span>
+    <span class="act-item__date">2018</span>
     <h3 class="act-item__title">Stage Play Performance</h3>
     <p class="act-item__desc">参与表演舞台剧，体验艺术的魅力。</p>
-    <div class="act-photos act-photos--1">
+    <div class="act-photos act-photos--1 act-photos--mid">
       <img src="/images/activities/stage-play.jpg" alt="Stage Play Performance" loading="lazy">
-    </div>
-  </div>
-
-  <div class="act-item">
-    <span class="act-item__date">2020</span>
-    <h3 class="act-item__title">Visited WHU for High School Reunion</h3>
-    <p class="act-item__desc">混入武大参与高中同学毕业典礼。</p>
-    <div class="act-photos act-photos--1">
-      <img src="/images/activities/whu-visit.jpg" alt="WHU Visit" loading="lazy">
     </div>
   </div>
 </div>
